@@ -18,6 +18,16 @@ ORDERED_OBJS += \
 "./UART/UART.obj" \
 "./UART/uartstdio.obj" \
 "./UART/ustdlib.obj" \
+"./eFLL/Fuzzy.obj" \
+"./eFLL/FuzzyComposition.obj" \
+"./eFLL/FuzzyIO.obj" \
+"./eFLL/FuzzyInput.obj" \
+"./eFLL/FuzzyOutput.obj" \
+"./eFLL/FuzzyRule.obj" \
+"./eFLL/FuzzyRuleAntecedent.obj" \
+"./eFLL/FuzzyRuleConsequent.obj" \
+"./eFLL/FuzzySet.obj" \
+"./eFLL/fuzzy_ball_and_plate.obj" \
 "C:/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
@@ -35,11 +45,13 @@ RMDIR := RMDIR /S/Q
 -include PWM/subdir_vars.mk
 -include SYSTICK/subdir_vars.mk
 -include UART/subdir_vars.mk
+-include eFLL/subdir_vars.mk
 -include subdir_rules.mk
 -include INVERSE/subdir_rules.mk
 -include PWM/subdir_rules.mk
 -include SYSTICK/subdir_rules.mk
 -include UART/subdir_rules.mk
+-include eFLL/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -170,8 +182,9 @@ MyProject.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "INVERSE\INVERSE.obj" "PWM\PWM.obj" "SYSTICK\SYSTICK.obj" "UART\UART.obj" "UART\uartstdio.obj" "UART\ustdlib.obj" 
+	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "INVERSE\INVERSE.obj" "PWM\PWM.obj" "SYSTICK\SYSTICK.obj" "UART\UART.obj" "UART\uartstdio.obj" "UART\ustdlib.obj" "eFLL\Fuzzy.obj" "eFLL\FuzzyComposition.obj" "eFLL\FuzzyIO.obj" "eFLL\FuzzyInput.obj" "eFLL\FuzzyOutput.obj" "eFLL\FuzzyRule.obj" "eFLL\FuzzyRuleAntecedent.obj" "eFLL\FuzzyRuleConsequent.obj" "eFLL\FuzzySet.obj" "eFLL\fuzzy_ball_and_plate.obj" 
 	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "INVERSE\INVERSE.d" "PWM\PWM.d" "SYSTICK\SYSTICK.d" "UART\UART.d" "UART\uartstdio.d" "UART\ustdlib.d" 
+	-$(RM) "eFLL\Fuzzy.d" "eFLL\FuzzyComposition.d" "eFLL\FuzzyIO.d" "eFLL\FuzzyInput.d" "eFLL\FuzzyOutput.d" "eFLL\FuzzyRule.d" "eFLL\FuzzyRuleAntecedent.d" "eFLL\FuzzyRuleConsequent.d" "eFLL\FuzzySet.d" "eFLL\fuzzy_ball_and_plate.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

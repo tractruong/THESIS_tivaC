@@ -50,6 +50,6 @@
 #include "UART/uartstdio.h"
 #include "UART/ustdlib.h"
 #include "SYSTICK/SYSTICK.h"
-
+#include "eFLL/fuzzy_ball_and_plate.h"
 
 #endif /* INCLUDE_H_ */
