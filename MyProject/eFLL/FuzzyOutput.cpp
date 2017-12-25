@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzyOutput.h"
+#include "FuzzyOutput.hpp"
 
 // CONSTRUTORES
 FuzzyOutput::FuzzyOutput() : FuzzyIO(){

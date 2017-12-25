@@ -1,13 +1,13 @@
-#include <iostream>
-#include "../eFLL/FuzzyRule.h"
-#include "../eFLL/FuzzyComposition.h"
-#include "../eFLL/Fuzzy.h"
-#include "../eFLL/FuzzyRuleConsequent.h"
-#include "../eFLL/FuzzyOutput.h"
-#include "../eFLL/FuzzyInput.h"
-#include "../eFLL/FuzzyIO.h"
-#include "../eFLL/FuzzySet.h"
-#include "../eFLL/FuzzyRuleAntecedent.h"
+//#include <iostream>
+#include "../eFLL/FuzzyRule.hpp"
+#include "../eFLL/FuzzyComposition.hpp"
+#include "../eFLL/Fuzzy.hpp"
+#include "../eFLL/FuzzyRuleConsequent.hpp"
+#include "../eFLL/FuzzyOutput.hpp"
+#include "../eFLL/FuzzyInput.hpp"
+#include "../eFLL/FuzzyIO.hpp"
+#include "../eFLL/FuzzySet.hpp"
+#include "../eFLL/FuzzyRuleAntecedent.hpp"
 
 //#define TEST_FUZZY
 

@@ -61,8 +61,8 @@ static void Systick_ISR(void)
             pre_errX = errX;
             pre_errY = errY;
 
-//            angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
-//           angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
+            angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+            angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
 
             Inverse(angleX,angleY,0);
             PWMPulseWidthSet(PWM0_BASE,PWM_OUT_1,1272-GetAlpha(0)*469/60); //servo2--PB7
@@ -71,7 +71,7 @@ static void Systick_ISR(void)
             PWMPulseWidthSet(PWM0_BASE,PWM_OUT_3,1272+GetAlpha(3)*469/60); //servo4--PB5
             PWMPulseWidthSet(PWM0_BASE,PWM_OUT_4,1272-GetAlpha(4)*469/60); //servo5--PE4
             PWMPulseWidthSet(PWM0_BASE,PWM_OUT_5,1272+GetAlpha(5)*469/60); //servo6--PE5
-            sprintf(s,"@%d:%d:%d:%d:%d:%d$",(int)GetAlpha(0),(int)GetAlpha(1),(int)GetAlpha(2),(int)GetAlpha(3),(int)GetAlpha(4),(int)GetAlpha(5));
+            sprintf(s,"@%d:%d:%d:%d:%d:%d:%d:%d$",(int)angleX,(int)angleY,(int)GetAlpha(0),(int)GetAlpha(1),(int)GetAlpha(2),(int)GetAlpha(3),(int)GetAlpha(4),(int)GetAlpha(5));
             while(s[j]!= 0x00)
             {
                UARTCharPut(UART0_BASE,s[j]);

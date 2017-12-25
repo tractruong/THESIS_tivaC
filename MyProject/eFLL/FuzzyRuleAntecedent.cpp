@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzyRuleAntecedent.h"
+#include "FuzzyRuleAntecedent.hpp"
 
 // CONSTRUTORES
 FuzzyRuleAntecedent::FuzzyRuleAntecedent(){

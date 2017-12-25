@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzyRule.h"
+#include "FuzzyRule.hpp"
 
 FuzzyRule::FuzzyRule(){
 }

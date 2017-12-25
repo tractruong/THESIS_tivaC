@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzyComposition.h"
+#include "FuzzyComposition.hpp"
 #include <math.h>
 
 // CONSTRUTORES

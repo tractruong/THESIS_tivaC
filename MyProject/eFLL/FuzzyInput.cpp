@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzyInput.h"
+#include "FuzzyInput.hpp"
 
 // CONSTRUTORES
 FuzzyInput::FuzzyInput() : FuzzyIO(){

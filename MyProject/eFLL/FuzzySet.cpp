@@ -9,10 +9,9 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzySet.h"
+#include "FuzzySet.hpp"
 
-FuzzySet::FuzzySet(){
-}
+FuzzySet::FuzzySet(){}
 
 FuzzySet::FuzzySet(float a, float b, float c, float d){
     this->a = a;
@@ -22,24 +21,24 @@ FuzzySet::FuzzySet(float a, float b, float c, float d){
     this->pertinence = 0.0;
 }
 
-float FuzzySet::getPointA(){
+float  FuzzySet::getPointA(){
     return this->a;
 }
 
-float FuzzySet::getPointB(){
+float  FuzzySet::getPointB(){
     return this->b;
 }
 
-float FuzzySet::getPointC(){
+float  FuzzySet::getPointC(){
     return this->c;
 }
 
-float FuzzySet::getPointD(){
+float  FuzzySet::getPointD(){
     return this->d;
 }
 
 bool FuzzySet::calculatePertinence(float crispValue){
-    float slope;
+    /*float slope;
 
     if (crispValue < this->a){
         if (this->a == this->b && this->b != this->c && this->c != this->d){
@@ -59,22 +58,22 @@ bool FuzzySet::calculatePertinence(float crispValue){
         if (this->c == this->d && this->c != this->b && this->b != this->a){
             this->pertinence = 1.0;
         }else{
-            this->pertinence = 0.0;
+            this->pertinence = 0;
         }
-    }
-    return true;
+    }*/
+   // return 1;
 }
 
-void FuzzySet::setPertinence(float pertinence){
+void  FuzzySet::setPertinence(float pertinence){
     if(this->pertinence < pertinence){
         this->pertinence = pertinence;
     }
 }
 
-float FuzzySet::getPertinence(){
+float  FuzzySet::getPertinence(){
     return this->pertinence;
 }
 
-void FuzzySet::reset(){
+void  FuzzySet::reset(){
     this->pertinence = 0.0;
 }

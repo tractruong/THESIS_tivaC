@@ -1,34 +1,37 @@
 ******************************************************************************
                   TI ARM Linker Unix v16.9.4                   
 ******************************************************************************
->> Linked Mon Dec 25 11:03:35 2017
+>> Linked Mon Dec 25 16:09:01 2017
 
 OUTPUT FILE NAME:   <MyProject.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00000b5d
+ENTRY POINT SYMBOL: "_c_int00"  address: 00005215
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00040000  000011ce  0003ee32  R  X
-  SRAM                  20000000   00008000  000004fb  00007b05  RW X
+  FLASH                 00000000   00040000  00006362  00039c9e  R  X
+  SRAM                  20000000   00008000  0000051f  00007ae1  RW X
 
 
 SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000011d0   000011d0    r-x
-  00000000    00000000    0000026c   0000026c    r-- .intvecs
-  0000026c    0000026c    00000d2e   00000d2e    r-x .text
-  00000f9c    00000f9c    000001ec   000001ec    r-- .const
-  00001188    00001188    00000048   00000048    r-- .cinit
-20000000    20000000    000004fd   00000000    rw-
+00000000    00000000    00006368   00006368    r-x
+  00000000    00000000    00005782   00005782    r-x .text
+  00005784    00005784    000004a4   000004a4    r-- .const
+  00005c28    00005c28    00000004   00000004    r-- .init_array
+  00005c2c    00005c2c    00000418   00000418    r-- .ARM.extab
+  00006048    00006048    00000050   00000050    r-- .cinit
+  00006098    00006098    000002d0   000002d0    r-- .ARM.exidx
+20000000    20000000    00000528   00000000    rw-
   20000000    20000000    0000026c   00000000    rw- .vtable
   2000026c    2000026c    00000200   00000000    rw- .stack
-  2000046c    2000046c    00000076   00000000    rw- .bss
-  200004e4    200004e4    00000019   00000000    rw- .data
+  2000046c    2000046c    0000007e   00000000    rw- .bss
+  200004ec    200004ec    0000002d   00000000    rw- .data
+  20000520    20000520    00000008   00000000    rw- .sysmem
 
 
 SECTION ALLOCATION MAP
@@ -36,165 +39,345 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.intvecs   0    00000000    0000026c     
-                  00000000    0000026c     tm4c123gh6pm_startup_ccs.obj (.intvecs)
+.text      0    00000000    00005782     
+                  00000000    00001010     fuzzy_ball_and_plate.obj (.text)
+                  00001010    000008a8     FuzzyOutput.obj (.text)
+                  000018b8    000007cc     FuzzyComposition.obj (.text)
+                  00002084    00000608     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : rtti.obj (.text)
+                  0000268c    0000051c                                      : tdeh_cpp_abi.obj (.text)
+                  00002ba8    000004b0     FuzzyRuleAntecedent.obj (.text)
+                  00003058    000003d8     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.obj (.text)
+                  00003430    000003d0                                      : memory.obj (.text)
+                  00003800    000002e8     Fuzzy.obj (.text)
+                  00003ae8    00000256     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_common.obj (.text)
+                  00003d3e    00000002                                      : mpu_init.obj (.text)
+                  00003d40    000001d4     UART.obj (.text)
+                  00003f14    000001b6     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fd_add_t2.obj (.text)
+                  000040ca    00000002                                      : startup.obj (.text)
+                  000040cc    0000018c     PWM.obj (.text)
+                  00004258    00000158     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_unwinder.obj (.text)
+                  000043b0    00000144                                      : typeinfo_.obj (.text)
+                  000044f4    00000136                                      : fd_div_t2.obj (.text)
+                  0000462a    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
+                  0000475c    00000110                   : sysctl.obj (.text:SysCtlClockGet)
+                  0000486c    000000fc     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fd_mul_t2.obj (.text)
+                  00004968    000000f6     FuzzyIO.obj (.text)
+                  00004a5e    00000002     --HOLE-- [fill = 0]
+                  00004a60    000000f4     driverlib.lib : sysctl.obj (.text:SysCtlClockSet)
+                  00004b54    000000e0     FuzzySet.obj (.text)
+                  00004c34    000000ba     FuzzyRuleConsequent.obj (.text)
+                  00004cee    0000009c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memcpy_t2.obj (.text)
+                  00004d8a    00000096     FuzzyRule.obj (.text)
+                  00004e20    00000086     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fd_cmp_t2.obj (.text:__aeabi_cdcmple)
+                  00004ea6    0000007a                                      : memset_t2.obj (.text)
+                  00004f20    00000074     main.obj (.text)
+                  00004f94    00000074     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : autoinit.obj (.text)
+                  00005008    0000006e                                      : fd_tos_t2.obj (.text)
+                  00005076    0000006c                                      : tdeh_uwentry_t2.obj (.text)
+                  000050e2    00000002     --HOLE-- [fill = 0]
+                  000050e4    00000068     driverlib.lib : interrupt.obj (.text:IntEnable)
+                  0000514c    00000068     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
+                  000051b4    00000060     FuzzyInput.obj (.text)
+                  00005214    00000054     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : boot.obj (.text)
+                  00005268    00000054                                      : exit.obj (.text)
+                  000052bc    00000050                                      : exception_.obj (.text)
+                  0000530c    0000004c                                      : cpy_tbl.obj (.text)
+                  00005358    00000048     driverlib.lib : gpio.obj (.text:GPIOPinConfigure)
+                  000053a0    00000048     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : bad_alloc.obj (.text)
+                  000053e8    00000046     driverlib.lib : uart.obj (.text:UARTConfigSetExpClk)
+                  0000542e    00000044     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : bsearch.obj (.text)
+                  00005472    00000002     --HOLE-- [fill = 0]
+                  00005474    00000040     driverlib.lib : uart.obj (.text:_UARTIntNumberGet)
+                  000054b4    00000038     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : fs_tod_t2.obj (.text)
+                  000054ec    00000034     driverlib.lib : interrupt.obj (.text:IntRegister)
+                  00005520    00000034                   : sysctl.obj (.text:SysCtlPeripheralEnable)
+                  00005554    0000002c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : new_.obj (.text)
+                  00005580    0000002a     driverlib.lib : gpio.obj (.text:GPIODirModeSet)
+                  000055aa    00000022                   : pwm.obj (.text:PWMGenConfigure)
+                  000055cc    00000020                   : uart.obj (.text:UARTDisable)
+                  000055ec    00000020     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : newhandler.obj (.text)
+                  0000560c    0000001e     driverlib.lib : pwm.obj (.text:PWMPulseWidthSet)
+                  0000562a    00000018                   : uart.obj (.text:UARTIntRegister)
+                  00005642    00000002     --HOLE-- [fill = 0]
+                  00005644    00000018     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : args_main.obj (.text)
+                  0000565c    00000014     driverlib.lib : sysctl.obj (.text:SysCtlPWMClockSet)
+                  00005670    00000014                   : uart.obj (.text:UARTEnable)
+                  00005684    00000014     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : _lock.obj (.text)
+                  00005698    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypePWM)
+                  000056aa    00000012                   : gpio.obj (.text:GPIOPinTypeUART)
+                  000056bc    00000012                   : pwm.obj (.text:PWMOutputState)
+                  000056ce    00000010                   : interrupt.obj (.text:IntMasterEnable)
+                  000056de    00000010                   : pwm.obj (.text:PWMGenPeriodSet)
+                  000056ee    0000000e                   : uart.obj (.text:UARTCharsAvail)
+                  000056fc    0000000e     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : copy_decompress_none.obj (.text:decompress:none)
+                  0000570a    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsie)
+                  00005716    0000000c                   : pwm.obj (.text:PWMGenEnable)
+                  00005722    0000000c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : copy_zero_init.obj (.text:decompress:ZI)
+                  0000572e    0000000a     driverlib.lib : uart.obj (.text:UARTCharGet)
+                  00005738    0000000a                   : uart.obj (.text:UARTCharPut)
+                  00005742    0000000a                   : uart.obj (.text:UARTIntStatus)
+                  0000574c    0000000a     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : delete.obj (.text)
+                  00005756    00000008     driverlib.lib : uart.obj (.text:UARTIntEnable)
+                  0000575e    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : error.obj (.text)
+                  00005766    00000008                                      : tdeh_init.obj (.text)
+                  0000576e    00000006     driverlib.lib : sysctl.obj (.text:SysCtlDelay)
+                  00005774    00000006                   : uart.obj (.text:UARTClockSourceSet)
+                  0000577a    00000004                   : uart.obj (.text:UARTIntClear)
+                  0000577e    00000004     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : pre_init.obj (.text)
 
-.text      0    0000026c    00000d2e     
-                  0000026c    000001d4     UART.obj (.text)
-                  00000440    0000018c     PWM.obj (.text)
-                  000005cc    00000132     driverlib.lib : gpio.obj (.text:GPIOPadConfigSet)
-                  000006fe    00000002     rtsv7M4_T_le_v4SPD16_eabi.lib : mpu_init.obj (.text)
-                  00000700    00000110     driverlib.lib : sysctl.obj (.text:SysCtlClockGet)
-                  00000810    000000f4                   : sysctl.obj (.text:SysCtlClockSet)
-                  00000904    0000009c     rtsv7M4_T_le_v4SPD16_eabi.lib : memcpy_t2.obj (.text)
-                  000009a0    0000007a                                   : memset_t2.obj (.text)
-                  00000a1a    00000002                                   : startup.obj (.text)
-                  00000a1c    00000070                                   : autoinit.obj (.text)
-                  00000a8c    00000068     driverlib.lib : interrupt.obj (.text:IntEnable)
-                  00000af4    00000068     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_lzss.obj (.text:decompress:lzss)
-                  00000b5c    00000054                                   : boot.obj (.text)
-                  00000bb0    00000054                                   : exit.obj (.text)
-                  00000c04    0000004c                                   : cpy_tbl.obj (.text)
-                  00000c50    00000048     driverlib.lib : gpio.obj (.text:GPIOPinConfigure)
-                  00000c98    00000048     main.obj (.text)
-                  00000ce0    00000046     driverlib.lib : uart.obj (.text:UARTConfigSetExpClk)
-                  00000d26    00000002     --HOLE-- [fill = 0]
-                  00000d28    00000040                   : uart.obj (.text:_UARTIntNumberGet)
-                  00000d68    00000034                   : interrupt.obj (.text:IntRegister)
-                  00000d9c    00000034                   : sysctl.obj (.text:SysCtlPeripheralEnable)
-                  00000dd0    0000002a                   : gpio.obj (.text:GPIODirModeSet)
-                  00000dfa    00000022                   : pwm.obj (.text:PWMGenConfigure)
-                  00000e1c    00000020                   : uart.obj (.text:UARTDisable)
-                  00000e3c    0000001e                   : pwm.obj (.text:PWMPulseWidthSet)
-                  00000e5a    00000018                   : uart.obj (.text:UARTIntRegister)
-                  00000e72    00000002     --HOLE-- [fill = 0]
-                  00000e74    00000018     rtsv7M4_T_le_v4SPD16_eabi.lib : args_main.obj (.text)
-                  00000e8c    00000014     driverlib.lib : sysctl.obj (.text:SysCtlPWMClockSet)
-                  00000ea0    00000014                   : uart.obj (.text:UARTEnable)
-                  00000eb4    00000014     rtsv7M4_T_le_v4SPD16_eabi.lib : _lock.obj (.text)
-                  00000ec8    00000012     driverlib.lib : gpio.obj (.text:GPIOPinTypePWM)
-                  00000eda    00000012                   : gpio.obj (.text:GPIOPinTypeUART)
-                  00000eec    00000012                   : pwm.obj (.text:PWMOutputState)
-                  00000efe    00000010                   : interrupt.obj (.text:IntMasterEnable)
-                  00000f0e    00000010                   : pwm.obj (.text:PWMGenPeriodSet)
-                  00000f1e    0000000e                   : uart.obj (.text:UARTCharsAvail)
-                  00000f2c    0000000e     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_decompress_none.obj (.text:decompress:none)
-                  00000f3a    0000000c     driverlib.lib : cpu.obj (.text:CPUcpsie)
-                  00000f46    0000000c                   : pwm.obj (.text:PWMGenEnable)
-                  00000f52    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : copy_zero_init.obj (.text:decompress:ZI)
-                  00000f5e    0000000c     tm4c123gh6pm_startup_ccs.obj (.text)
-                  00000f6a    0000000a     driverlib.lib : uart.obj (.text:UARTCharGet)
-                  00000f74    0000000a                   : uart.obj (.text:UARTIntStatus)
-                  00000f7e    00000008                   : uart.obj (.text:UARTIntEnable)
-                  00000f86    00000006                   : sysctl.obj (.text:SysCtlDelay)
-                  00000f8c    00000006                   : uart.obj (.text:UARTClockSourceSet)
-                  00000f92    00000004                   : uart.obj (.text:UARTIntClear)
-                  00000f96    00000004     rtsv7M4_T_le_v4SPD16_eabi.lib : pre_init.obj (.text)
+.const     0    00005784    000004a4     
+                  00005784    00000090     driverlib.lib : gpio.obj (.const:g_pui32GPIOBaseAddrs)
+                  00005814    00000070                   : interrupt.obj (.const)
+                  00005884    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
+                  000058f0    00000040                   : uart.obj (.const:g_ppui32UARTIntMap)
+                  00005930    00000040                   : uart.obj (.const:g_ppui32UARTIntMapSnowflake)
+                  00005970    00000032     main.obj (.const:.string:$P$T0$1)
+                  000059a2    00000028     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : typeinfo_.obj (.const:.typeinfo:_ZTSN10__cxxabiv123__fundamental_type_infoE)
+                  000059ca    00000026                                      : typeinfo_.obj (.const:.typeinfo:_ZTSN10__cxxabiv121__vmi_class_type_infoE)
+                  000059f0    00000025                                      : typeinfo_.obj (.const:.typeinfo:_ZTSN10__cxxabiv120__si_class_type_infoE)
+                  00005a15    00000024                                      : typeinfo_.obj (.const:.typeinfo:_ZTSN10__cxxabiv119__pointer_type_infoE)
+                  00005a39    00000022                                      : typeinfo_.obj (.const:.typeinfo:_ZTSN10__cxxabiv117__class_type_infoE)
+                  00005a5b    00000022                                      : typeinfo_.obj (.const:.typeinfo:_ZTSN10__cxxabiv117__pbase_type_infoE)
+                  00005a7d    00000002                                      : typeinfo_.obj (.const:.typeinfo:_ZTSe)
+                  00005a7f    00000001     --HOLE-- [fill = 0]
+                  00005a80    00000014                                      : typeinfo_.obj (.const:_ZTVSt10bad_typeid)
+                  00005a94    00000014                                      : exception_.obj (.const:_ZTVSt13bad_exception)
+                  00005aa8    00000014                                      : typeinfo_.obj (.const:_ZTVSt8bad_cast)
+                  00005abc    00000014                                      : bad_alloc.obj (.const:_ZTVSt9bad_alloc)
+                  00005ad0    00000014                                      : exception_.obj (.const:_ZTVSt9exception)
+                  00005ae4    00000012                                      : exception_.obj (.const:.typeinfo:_ZTSSt13bad_exception)
+                  00005af6    00000002                                      : tdeh_cpp_abi.obj (.const:.typeinfo:_ZTSv)
+                  00005af8    00000010                                      : typeinfo_.obj (.const:.typeinfo:_ZTIPKe)
+                  00005b08    00000010                                      : typeinfo_.obj (.const:_ZTVN10__cxxabiv117__class_type_infoE)
+                  00005b18    00000010                                      : typeinfo_.obj (.const:_ZTVN10__cxxabiv119__pointer_type_infoE)
+                  00005b28    00000010                                      : typeinfo_.obj (.const:_ZTVN10__cxxabiv120__si_class_type_infoE)
+                  00005b38    00000010                                      : typeinfo_.obj (.const:_ZTVN10__cxxabiv123__fundamental_type_infoE)
+                  00005b48    0000000f                                      : typeinfo_.obj (.const:.typeinfo:_ZTSSt10bad_typeid)
+                  00005b57    0000000d                                      : bad_alloc.obj (.const:.typeinfo:_ZTSSt9bad_alloc)
+                  00005b64    0000000d                                      : exception_.obj (.const:.typeinfo:_ZTSSt9exception)
+                  00005b71    0000000d                                      : typeinfo_.obj (.const:.typeinfo:_ZTSSt9type_info)
+                  00005b7e    00000002     --HOLE-- [fill = 0]
+                  00005b80    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTIN10__cxxabiv117__class_type_infoE)
+                  00005b8c    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTIN10__cxxabiv117__pbase_type_infoE)
+                  00005b98    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTIN10__cxxabiv119__pointer_type_infoE)
+                  00005ba4    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTIN10__cxxabiv120__si_class_type_infoE)
+                  00005bb0    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTIN10__cxxabiv121__vmi_class_type_infoE)
+                  00005bbc    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTIN10__cxxabiv123__fundamental_type_infoE)
+                  00005bc8    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTISt10bad_typeid)
+                  00005bd4    0000000c                                      : exception_.obj (.const:.typeinfo:_ZTISt13bad_exception)
+                  00005be0    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTISt8bad_cast)
+                  00005bec    0000000c                                      : bad_alloc.obj (.const:.typeinfo:_ZTISt9bad_alloc)
+                  00005bf8    0000000c                                      : typeinfo_.obj (.const:.typeinfo:_ZTSSt8bad_cast)
+                  00005c04    00000008                                      : exception_.obj (.const:.typeinfo:_ZTISt9exception)
+                  00005c0c    00000008                                      : typeinfo_.obj (.const:.typeinfo:_ZTISt9type_info)
+                  00005c14    00000008                                      : typeinfo_.obj (.const:.typeinfo:_ZTIe)
+                  00005c1c    00000008                                      : tdeh_cpp_abi.obj (.const:.typeinfo:_ZTIv)
+                  00005c24    00000004                                      : typeinfo_.obj (.const:.typeinfo:_ZTSPKe)
 
-.const     0    00000f9c    000001ec     
-                  00000f9c    00000090     driverlib.lib : gpio.obj (.const:g_pui32GPIOBaseAddrs)
-                  0000102c    00000070                   : interrupt.obj (.const)
-                  0000109c    0000006c                   : sysctl.obj (.const:g_pui32Xtals)
-                  00001108    00000040                   : uart.obj (.const:g_ppui32UARTIntMap)
-                  00001148    00000040                   : uart.obj (.const:g_ppui32UARTIntMapSnowflake)
-
-.cinit     0    00001188    00000048     
-                  00001188    00000011     (.cinit..data.load) [load image, compression = lzss]
-                  00001199    00000003     --HOLE-- [fill = 0]
-                  0000119c    0000000c     (__TI_handler_table)
-                  000011a8    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  000011b0    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
-                  000011b8    00000018     (__TI_cinit_table)
+.cinit     0    00006048    00000050     
+                  00006048    0000001a     (.cinit..data.load) [load image, compression = lzss]
+                  00006062    00000002     --HOLE-- [fill = 0]
+                  00006064    0000000c     (__TI_handler_table)
+                  00006070    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  00006078    00000008     (.cinit..vtable.load) [load image, compression = zero_init]
+                  00006080    00000018     (__TI_cinit_table)
 
 .init_array 
-*          0    00000000    00000000     UNINITIALIZED
+*          0    00005c28    00000004     
+                  00005c28    00000004     fuzzy_ball_and_plate.obj (.init_array)
 
 .vtable    0    20000000    0000026c     UNINITIALIZED
                   20000000    0000026c     driverlib.lib : interrupt.obj (.vtable)
 
-.bss       0    2000046c    00000076     UNINITIALIZED
-                  2000046c    00000064     UART.obj (.bss:Buff)
-                  200004d0    00000004     (.common:res_X)
-                  200004d4    00000004     (.common:res_Y)
-                  200004d8    00000004     (.common:ui32Load)
-                  200004dc    00000004     (.common:ui32PWMClock)
-                  200004e0    00000002     (.common:check_Uart)
-
-.data      0    200004e4    00000019     UNINITIALIZED
-                  200004e4    0000000c     rtsv7M4_T_le_v4SPD16_eabi.lib : exit.obj (.data:$O1$$)
-                  200004f0    00000008                                   : _lock.obj (.data:$O1$$)
-                  200004f8    00000004                                   : stkdepth_vars.obj (.data)
-                  200004fc    00000001     UART.obj (.data)
-
 .stack     0    2000026c    00000200     UNINITIALIZED
                   2000026c    00000200     --HOLE--
 
+.bss       0    2000046c    0000007e     UNINITIALIZED
+                  2000046c    00000064     UART.obj (.bss:Buff)
+                  200004d0    00000004     fuzzy_ball_and_plate.obj (.bss)
+                  200004d4    00000004     (.common:_ZSt16__dummy_typeinfo)
+                  200004d8    00000004     (.common:res_X)
+                  200004dc    00000004     (.common:res_Y)
+                  200004e0    00000004     (.common:ui32Load)
+                  200004e4    00000004     (.common:ui32PWMClock)
+                  200004e8    00000002     (.common:check_Uart)
+
+.data      0    200004ec    0000002d     UNINITIALIZED
+                  200004ec    0000000c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : exit.obj (.data:$O1$$)
+                  200004f8    0000000c                                      : memory.obj (.data:$O1$$)
+                  20000504    00000008                                      : _lock.obj (.data:$O1$$)
+                  2000050c    00000004                                      : stkdepth_vars.obj (.data)
+                  20000510    00000004                                      : tdeh_cpp_abi.obj (.data)
+                  20000514    00000004                                      : vars.obj (.data)
+                  20000518    00000001     UART.obj (.data)
+
+.sysmem    0    20000520    00000008     UNINITIALIZED
+                  20000520    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : memory.obj (.sysmem)
+
+.ARM.extab 
+*          0    00005c2c    00000418     
+                  00005c2c    00000270     fuzzy_ball_and_plate.obj (.ARM.extab)
+                  00005e9c    00000030     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.obj (.ARM.extab)
+                  00005ecc    0000001c     FuzzyOutput.obj (.ARM.extab)
+                  00005ee8    0000001c     FuzzyOutput.obj (.ARM.extab)
+                  00005f04    0000001c     FuzzyOutput.obj (.ARM.extab)
+                  00005f20    0000001c     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_cpp_abi.obj (.ARM.extab)
+                  00005f3c    00000014                                      : new_.obj (.ARM.extab)
+                  00005f50    00000010                                      : bad_alloc.obj (.ARM.extab)
+                  00005f60    00000010                                      : bad_alloc.obj (.ARM.extab)
+                  00005f70    00000010                                      : bad_alloc.obj (.ARM.extab)
+                  00005f80    00000010                                      : delete.obj (.ARM.extab)
+                  00005f90    00000010                                      : tdeh_cpp_abi.obj (.ARM.extab)
+                  00005fa0    00000010                                      : tdeh_cpp_abi.obj (.ARM.extab)
+                  00005fb0    00000010                                      : tdeh_cpp_abi.obj (.ARM.extab)
+                  00005fc0    00000010                                      : typeinfo_.obj (.ARM.extab)
+                  00005fd0    00000010                                      : typeinfo_.obj (.ARM.extab)
+                  00005fe0    00000010                                      : typeinfo_.obj (.ARM.extab)
+                  00005ff0    00000010                                      : typeinfo_.obj (.ARM.extab)
+                  00006000    00000010                                      : typeinfo_.obj (.ARM.extab)
+                  00006010    00000010                                      : typeinfo_.obj (.ARM.extab)
+                  00006020    0000000c     FuzzyOutput.obj (.ARM.extab)
+                  0000602c    0000000c     FuzzyOutput.obj (.ARM.extab)
+                  00006038    0000000c     FuzzyRuleAntecedent.obj (.ARM.extab)
+
+.ARM.exidx 
+*          0    00006098    000002d0     
+                  00006098    00000010     fuzzy_ball_and_plate.obj (.ARM.exidx)
+                  000060a8    00000030     FuzzyOutput.obj (.ARM.exidx)
+                  000060d8    00000028     FuzzyComposition.obj (.ARM.exidx)
+                  00006100    00000050     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : rtti.obj (.ARM.exidx)
+                  00006150    00000088                                      : tdeh_cpp_abi.obj (.ARM.exidx)
+                  000061d8    00000008     FuzzyRuleAntecedent.obj (.ARM.exidx)
+                  000061e0    00000030     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_arm.obj (.ARM.exidx)
+                  00006210    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<memory.obj>)
+                  00006218    00000020     Fuzzy.obj (.ARM.exidx)
+                  00006238    00000008     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : tdeh_pr_common.obj (.ARM.exidx)
+                  00006240    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<mpu_init.obj>)
+                  00006248    00000020                                      : tdeh_unwinder.obj (.ARM.exidx)
+                  00006268    00000030                                      : typeinfo_.obj (.ARM.exidx)
+                  00006298    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<fd_div_t2.obj>)
+                  000062a0    00000010     FuzzyIO.obj (.ARM.exidx)
+                  000062b0    00000008     (.ARM.exidx.text:SysCtlClockSet:driverlib.lib<sysctl.obj>)
+                  000062b8    00000010     FuzzyRuleConsequent.obj (.ARM.exidx)
+                  000062c8    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<memcpy_t2.obj>)
+                  000062d0    00000008     FuzzyRule.obj (.ARM.exidx)
+                  000062d8    00000008     (.ARM.exidx.text:__aeabi_cdcmple:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<fd_cmp_t2.obj>)
+                  000062e0    00000020     FuzzyInput.obj (.ARM.exidx)
+                  00006300    00000008     (.ARM.exidx.text:rtsv7M4_T_le_v4SPD16_eabi_eh.lib<boot.obj>)
+                  00006308    00000018     rtsv7M4_T_le_v4SPD16_eabi_eh.lib : bad_alloc.obj (.ARM.exidx)
+                  00006320    00000008     (.ARM.exidx.text:UARTConfigSetExpClk:driverlib.lib<uart.obj>)
+                  00006328    00000008                                      : new_.obj (.ARM.exidx)
+                  00006330    00000008     (.ARM.exidx.text:GPIODirModeSet:driverlib.lib<gpio.obj>)
+                  00006338    00000008                                      : newhandler.obj (.ARM.exidx)
+                  00006340    00000008     (.ARM.exidx.text:PWMPulseWidthSet:driverlib.lib<pwm.obj>)
+                  00006348    00000008                                      : delete.obj (.ARM.exidx)
+                  00006350    00000008     (.ARM.exidx.text:UARTIntEnable:driverlib.lib<uart.obj>)
+                  00006358    00000008                                      : error.obj (.ARM.exidx)
+                  00006360    00000008     (.ARM.exidx.text:SysCtlDelay:driverlib.lib<sysctl.obj>)
+
 MODULE SUMMARY
 
-       Module                         code   ro data   rw data
-       ------                         ----   -------   -------
+       Module                     code    ro data   rw data
+       ------                     ----    -------   -------
     ./
-       tm4c123gh6pm_startup_ccs.obj   12     620       0      
-       main.obj                       72     0         10     
-    +--+------------------------------+------+---------+---------+
-       Total:                         84     620       10     
-                                                              
+       main.obj                   116     50        10     
+    +--+--------------------------+-------+---------+---------+
+       Total:                     116     50        10     
+                                                           
     ./PWM/
-       PWM.obj                        396    0         8      
-    +--+------------------------------+------+---------+---------+
-       Total:                         396    0         8      
-                                                              
+       PWM.obj                    396     0         8      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     396     0         8      
+                                                           
     ./UART/
-       UART.obj                       468    0         101    
-    +--+------------------------------+------+---------+---------+
-       Total:                         468    0         101    
-                                                              
+       UART.obj                   468     0         101    
+    +--+--------------------------+-------+---------+---------+
+       Total:                     468     0         101    
+                                                           
+    ./eFLL/
+       fuzzy_ball_and_plate.obj   4112    644       4      
+       FuzzyOutput.obj            2216    156       0      
+       FuzzyComposition.obj       1996    40        0      
+       FuzzyRuleAntecedent.obj    1200    20        0      
+       Fuzzy.obj                  744     32        0      
+       FuzzyIO.obj                246     16        0      
+       FuzzySet.obj               224     0         0      
+       FuzzyRuleConsequent.obj    186     16        0      
+       FuzzyRule.obj              150     8         0      
+       FuzzyInput.obj             96      32        0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     11170   964       4      
+                                                           
     /home/trac/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib
-       interrupt.obj                  172    112       620    
-       sysctl.obj                     594    108       0      
-       gpio.obj                       456    144       0      
-       uart.obj                       262    128       0      
-       pwm.obj                        110    0         0      
-       cpu.obj                        12     0         0      
-    +--+------------------------------+------+---------+---------+
-       Total:                         1606   492       620    
-                                                              
-    /home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi.lib
-       memcpy_t2.obj                  156    0         0      
-       memset_t2.obj                  122    0         0      
-       autoinit.obj                   112    0         0      
-       copy_decompress_lzss.obj       104    0         0      
-       exit.obj                       84     0         12     
-       boot.obj                       84     0         0      
-       cpy_tbl.obj                    76     0         0      
-       _lock.obj                      20     0         8      
-       args_main.obj                  24     0         0      
-       copy_decompress_none.obj       14     0         0      
-       copy_zero_init.obj             12     0         0      
-       pre_init.obj                   4      0         0      
-       stkdepth_vars.obj              0      0         4      
-       mpu_init.obj                   2      0         0      
-       startup.obj                    2      0         0      
-    +--+------------------------------+------+---------+---------+
-       Total:                         816    0         24     
-                                                              
-       Stack:                         0      0         512    
-       Linker Generated:              0      69        0      
-    +--+------------------------------+------+---------+---------+
-       Grand Total:                   3370   1181      1275   
+       interrupt.obj              172     112       620    
+       sysctl.obj                 594     108       0      
+       gpio.obj                   456     144       0      
+       uart.obj                   272     128       0      
+       pwm.obj                    110     0         0      
+       cpu.obj                    12      0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     1616    492       620    
+                                                           
+    /home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib/rtsv7M4_T_le_v4SPD16_eabi_eh.lib
+       rtti.obj                   1544    80        0      
+       tdeh_cpp_abi.obj           1308    270       4      
+       tdeh_pr_arm.obj            984     48        0      
+       memory.obj                 976     0         12     
+       typeinfo_.obj              324     641       4      
+       tdeh_pr_common.obj         598     8         0      
+       fd_add_t2.obj              438     0         0      
+       tdeh_unwinder.obj          344     32        0      
+       fd_div_t2.obj              310     0         0      
+       fd_mul_t2.obj              252     0         0      
+       bad_alloc.obj              72      117       0      
+       exception_.obj             80      91        0      
+       memcpy_t2.obj              156     0         0      
+       fd_cmp_t2.obj              134     0         0      
+       memset_t2.obj              122     0         0      
+       autoinit.obj               116     0         0      
+       fd_tos_t2.obj              110     0         0      
+       tdeh_uwentry_t2.obj        108     0         0      
+       copy_decompress_lzss.obj   104     0         0      
+       exit.obj                   84      0         12     
+       boot.obj                   84      0         0      
+       cpy_tbl.obj                76      0         0      
+       new_.obj                   44      28        0      
+       bsearch.obj                68      0         0      
+       fs_tod_t2.obj              56      0         0      
+       newhandler.obj             32      8         0      
+       delete.obj                 10      24        0      
+       _lock.obj                  20      0         8      
+       args_main.obj              24      0         0      
+       error.obj                  8       8         0      
+       copy_decompress_none.obj   14      0         0      
+       copy_zero_init.obj         12      0         0      
+       tdeh_init.obj              8       0         0      
+       pre_init.obj               4       0         0      
+       stkdepth_vars.obj          0       0         4      
+       vars.obj                   0       0         4      
+       mpu_init.obj               2       0         0      
+       startup.obj                2       0         0      
+    +--+--------------------------+-------+---------+---------+
+       Total:                     8628    1355      48     
+                                                           
+       Heap:                      0       0         8      
+       Stack:                     0       0         512    
+       Linker Generated:          0       174       0      
+    +--+--------------------------+-------+---------+---------+
+       Grand Total:               22394   3035      1311   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 000011b8 records: 3, size/record: 8, table size: 24
-	.data: load addr=00001188, load size=00000011 bytes, run addr=200004e4, run size=00000019 bytes, compression=lzss
-	.bss: load addr=000011a8, load size=00000008 bytes, run addr=2000046c, run size=00000076 bytes, compression=zero_init
-	.vtable: load addr=000011b0, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
+__TI_cinit_table @ 00006080 records: 3, size/record: 8, table size: 24
+	.data: load addr=00006048, load size=0000001a bytes, run addr=200004ec, run size=0000002d bytes, compression=lzss
+	.bss: load addr=00006070, load size=00000008 bytes, run addr=2000046c, run size=0000007e bytes, compression=zero_init
+	.vtable: load addr=00006078, load size=00000008 bytes, run addr=20000000, run size=0000026c bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 0000119c records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 00006064 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_zero_init
 	index: 1, handler: __TI_decompress_lzss
 	index: 2, handler: __TI_decompress_none
@@ -202,199 +385,785 @@ __TI_handler_table @ 0000119c records: 3, size/record: 4, table size: 12
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
-address   name                           
--------   ----                           
-00000bb1  C$$EXIT                        
-00000f3b  CPUcpsie                       
-00000441  Config_PWM                     
-000003bf  Config_UART                    
-00000dd1  GPIODirModeSet                 
-000005cd  GPIOPadConfigSet               
-00000c51  GPIOPinConfigure               
-00000ec9  GPIOPinTypePWM                 
-00000edb  GPIOPinTypeUART                
-00000a8d  IntEnable                      
-00000eff  IntMasterEnable                
-00000d69  IntRegister                    
-00000dfb  PWMGenConfigure                
-00000f47  PWMGenEnable                   
-00000f0f  PWMGenPeriodSet                
-00000eed  PWMOutputState                 
-00000e3d  PWMPulseWidthSet               
-00000f5f  ResetISR                       
-000002dd  SEP_UART                       
-UNDEFED   SHT$$INIT_ARRAY$$Base          
-UNDEFED   SHT$$INIT_ARRAY$$Limit         
-00000701  SysCtlClockGet                 
-00000811  SysCtlClockSet                 
-00000f87  SysCtlDelay                    
-00000e8d  SysCtlPWMClockSet              
-00000d9d  SysCtlPeripheralEnable         
-00000f6b  UARTCharGet                    
-00000f1f  UARTCharsAvail                 
-00000f8d  UARTClockSourceSet             
-00000ce1  UARTConfigSetExpClk            
-00000e1d  UARTDisable                    
-00000ea1  UARTEnable                     
-0000028d  UARTGetBuffer                  
-00000f93  UARTIntClear                   
-00000f7f  UARTIntEnable                  
-00000e5b  UARTIntRegister                
-00000f75  UARTIntStatus                  
-2000046c  __STACK_END                    
-00000200  __STACK_SIZE                   
-2000046c  __STACK_TOP                    
-000011b8  __TI_CINIT_Base                
-000011d0  __TI_CINIT_Limit               
-0000119c  __TI_Handler_Table_Base        
-000011a8  __TI_Handler_Table_Limit       
-00000a1d  __TI_auto_init                 
-200004e4  __TI_cleanup_ptr               
-00000af5  __TI_decompress_lzss           
-00000f2d  __TI_decompress_none           
-200004e8  __TI_dtors_ptr                 
-200004ec  __TI_enable_exit_profile_output
-ffffffff  __TI_pprof_out_hndl            
-ffffffff  __TI_prof_data_size            
-ffffffff  __TI_prof_data_start           
-00000000  __TI_static_base__             
-00000f53  __TI_zero_init                 
-000009a1  __aeabi_memclr                 
-000009a1  __aeabi_memclr4                
-000009a1  __aeabi_memclr8                
-00000905  __aeabi_memcpy                 
-00000905  __aeabi_memcpy4                
-00000905  __aeabi_memcpy8                
-000009a3  __aeabi_memset                 
-000009a3  __aeabi_memset4                
-000009a3  __aeabi_memset8                
-ffffffff  __binit__                      
-ffffffff  __c_args__                     
-000006ff  __mpu_init                     
-2000026c  __stack                        
-00000e75  _args_main                     
-00000b5d  _c_int00                       
-200004f0  _lock                          
-00000ec3  _nop                           
-00000ebb  _register_lock                 
-00000eb5  _register_unlock               
-00000a1b  _system_post_cinit             
-00000f97  _system_pre_init               
-200004f4  _unlock                        
-00000bb5  abort                          
-ffffffff  binit                          
-200004e0  check_Uart                     
-00000c05  copy_in                        
-00000c99  delayMS                        
-00000bbd  exit                           
-20000000  g_pfnRAMVectors                
-00000000  g_pfnVectors                   
-00000cb5  main                           
-200004f8  main_func_sp                   
-00000905  memcpy                         
-000009a9  memset                         
-200004d0  res_X                          
-200004d4  res_Y                          
-200004d8  ui32Load                       
-200004dc  ui32PWMClock                   
+address   name                                                                                                                          
+-------   ----                                                                                                                          
+00006098  .ARM.exidx$$Base                                                                                                              
+00006368  .ARM.exidx$$Limit                                                                                                             
+00005269  C$$EXIT                                                                                                                       
+0000570b  CPUcpsie                                                                                                                      
+00005581  GPIODirModeSet                                                                                                                
+0000462b  GPIOPadConfigSet                                                                                                              
+00005359  GPIOPinConfigure                                                                                                              
+00005699  GPIOPinTypePWM                                                                                                                
+000056ab  GPIOPinTypeUART                                                                                                               
+000050e5  IntEnable                                                                                                                     
+000056cf  IntMasterEnable                                                                                                               
+000054ed  IntRegister                                                                                                                   
+000055ab  PWMGenConfigure                                                                                                               
+00005717  PWMGenEnable                                                                                                                  
+000056df  PWMGenPeriodSet                                                                                                               
+000056bd  PWMOutputState                                                                                                                
+0000560d  PWMPulseWidthSet                                                                                                              
+00005c28  SHT$$INIT_ARRAY$$Base                                                                                                         
+00005c2c  SHT$$INIT_ARRAY$$Limit                                                                                                        
+0000475d  SysCtlClockGet                                                                                                                
+00004a61  SysCtlClockSet                                                                                                                
+0000576f  SysCtlDelay                                                                                                                   
+0000565d  SysCtlPWMClockSet                                                                                                             
+00005521  SysCtlPeripheralEnable                                                                                                        
+0000572f  UARTCharGet                                                                                                                   
+00005739  UARTCharPut                                                                                                                   
+000056ef  UARTCharsAvail                                                                                                                
+00005775  UARTClockSourceSet                                                                                                            
+000053e9  UARTConfigSetExpClk                                                                                                           
+000055cd  UARTDisable                                                                                                                   
+00005671  UARTEnable                                                                                                                    
+0000577b  UARTIntClear                                                                                                                  
+00005757  UARTIntEnable                                                                                                                 
+0000562b  UARTIntRegister                                                                                                               
+00005743  UARTIntStatus                                                                                                                 
+00005077  _Unwind_RaiseException                                                                                                        
+00005099  _Unwind_Resume                                                                                                                
+000040cd  _Z10Config_PWMv                                                                                                               
+00000001  _Z10Init_Fuzzyv                                                                                                               
+00003e93  _Z11Config_UARTv                                                                                                              
+00000f33  _Z12Fuzzy_OutPutfffffii                                                                                                       
+00000fc3  _Z12limit_outputiii                                                                                                           
+00003d61  _Z13UARTGetBufferPc                                                                                                           
+00004259  _Z13__TI_prel2absPKj                                                                                                          
+000033e7  _Z16__TI_targ_set_prP19_Unwind_Exception_s                                                                                    
+000055ed  _Z21__default_new_handlerv                                                                                                    
+000033e5  _Z22__TI_targ_rtti_addressjP15_Unwind_Context                                                                                 
+000033e1  _Z23__TI_targ_regbuf_get_pcP15_Unwind_Context                                                                                 
+000033dd  _Z23__TI_targ_regbuf_get_sbP15_Unwind_Context                                                                                 
+000033d9  _Z23__TI_targ_regbuf_get_spP15_Unwind_Context                                                                                 
+000033d5  _Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj                                                                                
+00003ae9  _Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb
+000033cd  _Z24__TI_targ_regbuf_installP15_Unwind_Context                                                                                
+000033c9  _Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj                                                                             
+00004f21  _Z7delayMSi                                                                                                                   
+00003db1  _Z8SEP_UARTv                                                                                                                  
+000051e3  _ZN10FuzzyInput28calculateFuzzySetPertinencesEv                                                                               
+000051c3  _ZN10FuzzyInputC1Ei                                                                                                           
+000051b5  _ZN10FuzzyInputC1Ev                                                                                                           
+000051c3  _ZN10FuzzyInputC2Ei                                                                                                           
+000051b5  _ZN10FuzzyInputC2Ev                                                                                                           
+000051d5  _ZN10FuzzyInputD1Ev                                                                                                           
+000051d5  _ZN10FuzzyInputD2Ev                                                                                                           
+000044d9  _ZN10__cxxabiv116__enum_type_infoD0Ev                                                                                         
+000044d7  _ZN10__cxxabiv116__enum_type_infoD1Ev                                                                                         
+000044d7  _ZN10__cxxabiv116__enum_type_infoD2Ev                                                                                         
+000044cf  _ZN10__cxxabiv117__array_type_infoD0Ev                                                                                        
+000044cd  _ZN10__cxxabiv117__array_type_infoD1Ev                                                                                        
+000044cd  _ZN10__cxxabiv117__array_type_infoD2Ev                                                                                        
+000044c5  _ZN10__cxxabiv117__class_type_infoD0Ev                                                                                        
+000044c3  _ZN10__cxxabiv117__class_type_infoD1Ev                                                                                        
+000044c3  _ZN10__cxxabiv117__class_type_infoD2Ev                                                                                        
+000044bb  _ZN10__cxxabiv117__pbase_type_infoD0Ev                                                                                        
+000044b9  _ZN10__cxxabiv117__pbase_type_infoD1Ev                                                                                        
+000044b9  _ZN10__cxxabiv117__pbase_type_infoD2Ev                                                                                        
+000044b1  _ZN10__cxxabiv119__pointer_type_infoD0Ev                                                                                      
+000044af  _ZN10__cxxabiv119__pointer_type_infoD1Ev                                                                                      
+000044af  _ZN10__cxxabiv119__pointer_type_infoD2Ev                                                                                      
+000044a7  _ZN10__cxxabiv120__function_type_infoD0Ev                                                                                     
+000044a5  _ZN10__cxxabiv120__function_type_infoD1Ev                                                                                     
+000044a5  _ZN10__cxxabiv120__function_type_infoD2Ev                                                                                     
+0000449d  _ZN10__cxxabiv120__si_class_type_infoD0Ev                                                                                     
+0000449b  _ZN10__cxxabiv120__si_class_type_infoD1Ev                                                                                     
+0000449b  _ZN10__cxxabiv120__si_class_type_infoD2Ev                                                                                     
+00004493  _ZN10__cxxabiv121__vmi_class_type_infoD0Ev                                                                                    
+00004491  _ZN10__cxxabiv121__vmi_class_type_infoD1Ev                                                                                    
+00004491  _ZN10__cxxabiv121__vmi_class_type_infoD2Ev                                                                                    
+00004489  _ZN10__cxxabiv123__fundamental_type_infoD0Ev                                                                                  
+00004487  _ZN10__cxxabiv123__fundamental_type_infoD1Ev                                                                                  
+00004487  _ZN10__cxxabiv123__fundamental_type_infoD2Ev                                                                                  
+0000447f  _ZN10__cxxabiv129__pointer_to_member_type_infoD0Ev                                                                            
+0000447d  _ZN10__cxxabiv129__pointer_to_member_type_infoD1Ev                                                                            
+0000447d  _ZN10__cxxabiv129__pointer_to_member_type_infoD2Ev                                                                            
+00001609  _ZN11FuzzyOutput14getCrispOutputEv                                                                                            
+00001693  _ZN11FuzzyOutput4swapEP13fuzzySetArrayS1_                                                                                     
+00001617  _ZN11FuzzyOutput5orderEv                                                                                                      
+000016bd  _ZN11FuzzyOutput7rebuildEffffffffPfS0_                                                                                        
+00001085  _ZN11FuzzyOutput8truncateEv                                                                                                   
+00001031  _ZN11FuzzyOutputC1Ei                                                                                                          
+00001011  _ZN11FuzzyOutputC1Ev                                                                                                          
+00001031  _ZN11FuzzyOutputC2Ei                                                                                                          
+00001011  _ZN11FuzzyOutputC2Ev                                                                                                          
+00001055  _ZN11FuzzyOutputD1Ev                                                                                                          
+00001055  _ZN11FuzzyOutputD2Ev                                                                                                          
+0000194b  _ZN16FuzzyComposition10checkPointEff                                                                                          
+00001da3  _ZN16FuzzyComposition11cleanPointsEP11pointsArray                                                                             
+000019a1  _ZN16FuzzyComposition5buildEv                                                                                                 
+00001d85  _ZN16FuzzyComposition5emptyEv                                                                                                 
+00001dd9  _ZN16FuzzyComposition7rebuildEP11pointsArrayS1_S1_S1_                                                                         
+000018e3  _ZN16FuzzyComposition8addPointEff                                                                                             
+00001a47  _ZN16FuzzyComposition8avaliateEv                                                                                              
+00002067  _ZN16FuzzyComposition8rmvPointEP11pointsArray                                                                                 
+000018b9  _ZN16FuzzyCompositionC1Ev                                                                                                     
+000018b9  _ZN16FuzzyCompositionC2Ev                                                                                                     
+000018d1  _ZN16FuzzyCompositionD1Ev                                                                                                     
+000018d1  _ZN16FuzzyCompositionD2Ev                                                                                                     
+00002bd9  _ZN19FuzzyRuleAntecedent10joinSingleEP8FuzzySet                                                                               
+00002ccb  _ZN19FuzzyRuleAntecedent10joinWithOREP8FuzzySetPS_                                                                            
+00002c2f  _ZN19FuzzyRuleAntecedent10joinWithOREP8FuzzySetS1_                                                                            
+00002cff  _ZN19FuzzyRuleAntecedent10joinWithOREPS_P8FuzzySet                                                                            
+00002d67  _ZN19FuzzyRuleAntecedent10joinWithOREPS_S0_                                                                                   
+00002c63  _ZN19FuzzyRuleAntecedent11joinWithANDEP8FuzzySetPS_                                                                           
+00002bfb  _ZN19FuzzyRuleAntecedent11joinWithANDEP8FuzzySetS1_                                                                           
+00002c97  _ZN19FuzzyRuleAntecedent11joinWithANDEPS_P8FuzzySet                                                                           
+00002d33  _ZN19FuzzyRuleAntecedent11joinWithANDEPS_S0_                                                                                  
+00002d9b  _ZN19FuzzyRuleAntecedent8evaluateEv                                                                                           
+00002ba9  _ZN19FuzzyRuleAntecedentC1Ev                                                                                                  
+00002ba9  _ZN19FuzzyRuleAntecedentC2Ev                                                                                                  
+00004cd3  _ZN19FuzzyRuleConsequent14cleanFuzzySetsEP19fuzzySetOutputArray                                                               
+00004ca5  _ZN19FuzzyRuleConsequent8evaluateEf                                                                                           
+00004c5f  _ZN19FuzzyRuleConsequent9addOutputEP8FuzzySet                                                                                 
+00004c35  _ZN19FuzzyRuleConsequentC1Ev                                                                                                  
+00004c35  _ZN19FuzzyRuleConsequentC2Ev                                                                                                  
+00004c4d  _ZN19FuzzyRuleConsequentD1Ev                                                                                                  
+00004c4d  _ZN19FuzzyRuleConsequentD2Ev                                                                                                  
+00003a1b  _ZN5Fuzzy11isFiredRuleEi                                                                                                      
+000038e9  _ZN5Fuzzy12addFuzzyRuleEP9FuzzyRule                                                                                           
+00003857  _ZN5Fuzzy13addFuzzyInputEP10FuzzyInput                                                                                        
+0000389d  _ZN5Fuzzy14addFuzzyOutputEP11FuzzyOutput                                                                                      
+00003ac7  _ZN5Fuzzy15cleanFuzzyRulesEP14fuzzyRuleArray                                                                                  
+00003a8f  _ZN5Fuzzy16cleanFuzzyInputsEP15fuzzyInputArray                                                                                
+00003aab  _ZN5Fuzzy17cleanFuzzyOutputsEP16fuzzyOutputArray                                                                              
+00003977  _ZN5Fuzzy7fuzzifyEv                                                                                                           
+0000392f  _ZN5Fuzzy8setInputEif                                                                                                         
+00003a53  _ZN5Fuzzy9defuzzifyEi                                                                                                         
+00003801  _ZN5FuzzyC1Ev                                                                                                                 
+00003801  _ZN5FuzzyC2Ev                                                                                                                 
+00003831  _ZN5FuzzyD1Ev                                                                                                                 
+00003831  _ZN5FuzzyD2Ev                                                                                                                 
+000049d9  _ZN7FuzzyIO11addFuzzySetEP8FuzzySet                                                                                           
+000049c9  _ZN7FuzzyIO13getCrispInputEv                                                                                                  
+000049b5  _ZN7FuzzyIO13setCrispInputEf                                                                                                  
+00004a43  _ZN7FuzzyIO14cleanFuzzySetsEP13fuzzySetArray                                                                                  
+00004a1f  _ZN7FuzzyIO14resetFuzzySetsEv                                                                                                 
+000049a7  _ZN7FuzzyIO8getIndexEv                                                                                                        
+00004975  _ZN7FuzzyIOC1Ei                                                                                                               
+00004969  _ZN7FuzzyIOC1Ev                                                                                                               
+00004975  _ZN7FuzzyIOC2Ei                                                                                                               
+00004969  _ZN7FuzzyIOC2Ev                                                                                                               
+00004995  _ZN7FuzzyIOD1Ev                                                                                                               
+00004995  _ZN7FuzzyIOD2Ev                                                                                                               
+00004c11  _ZN8FuzzySet13getPertinenceEv                                                                                                 
+00004be9  _ZN8FuzzySet13setPertinenceEf                                                                                                 
+00004bdb  _ZN8FuzzySet19calculatePertinenceEf                                                                                           
+00004c21  _ZN8FuzzySet5resetEv                                                                                                          
+00004b9b  _ZN8FuzzySet9getPointAEv                                                                                                      
+00004bab  _ZN8FuzzySet9getPointBEv                                                                                                      
+00004bbb  _ZN8FuzzySet9getPointCEv                                                                                                      
+00004bcb  _ZN8FuzzySet9getPointDEv                                                                                                      
+00004b61  _ZN8FuzzySetC1Effff                                                                                                           
+00004b55  _ZN8FuzzySetC1Ev                                                                                                              
+00004b61  _ZN8FuzzySetC2Effff                                                                                                           
+00004b55  _ZN8FuzzySetC2Ev                                                                                                              
+00004dcf  _ZN9FuzzyRule18evaluateExpressionEv                                                                                           
+00004e13  _ZN9FuzzyRule7isFiredEv                                                                                                       
+00004dc1  _ZN9FuzzyRule8getIndexEv                                                                                                      
+00004d97  _ZN9FuzzyRuleC1EiP19FuzzyRuleAntecedentP19FuzzyRuleConsequent                                                                 
+00004d8b  _ZN9FuzzyRuleC1Ev                                                                                                             
+00004d97  _ZN9FuzzyRuleC2EiP19FuzzyRuleAntecedentP19FuzzyRuleConsequent                                                                 
+00004d8b  _ZN9FuzzyRuleC2Ev                                                                                                             
+00004479  _ZNKSt10bad_typeid4whatEv                                                                                                     
+000052fd  _ZNKSt13bad_exception4whatEv                                                                                                  
+00004475  _ZNKSt8bad_cast4whatEv                                                                                                        
+000053db  _ZNKSt9bad_alloc4whatEv                                                                                                       
+000052f9  _ZNKSt9exception4whatEv                                                                                                       
+00004437  _ZNKSt9type_info4nameEv                                                                                                       
+00004467  _ZNKSt9type_info6beforeERKS_                                                                                                  
+00004451  _ZNKSt9type_infoeqERKS_                                                                                                       
+0000443b  _ZNKSt9type_infoneERKS_                                                                                                       
+0000442b  _ZNSt10bad_typeidC1ERKS_                                                                                                      
+0000441f  _ZNSt10bad_typeidC1Ev                                                                                                         
+0000442b  _ZNSt10bad_typeidC2ERKS_                                                                                                      
+0000441f  _ZNSt10bad_typeidC2Ev                                                                                                         
+00004411  _ZNSt10bad_typeidD0Ev                                                                                                         
+00004409  _ZNSt10bad_typeidD1Ev                                                                                                         
+00004409  _ZNSt10bad_typeidD2Ev                                                                                                         
+000043fd  _ZNSt10bad_typeidaSERKS_                                                                                                      
+000052ed  _ZNSt13bad_exceptionC1ERKS_                                                                                                   
+000052e1  _ZNSt13bad_exceptionC1Ev                                                                                                      
+000052ed  _ZNSt13bad_exceptionC2ERKS_                                                                                                   
+000052e1  _ZNSt13bad_exceptionC2Ev                                                                                                      
+000052d9  _ZNSt13bad_exceptionD0Ev                                                                                                      
+000052d7  _ZNSt13bad_exceptionD1Ev                                                                                                      
+000052d7  _ZNSt13bad_exceptionD2Ev                                                                                                      
+000052d5  _ZNSt13bad_exceptionaSERKS_                                                                                                   
+000043f1  _ZNSt8bad_castC1ERKS_                                                                                                         
+000043e5  _ZNSt8bad_castC1Ev                                                                                                            
+000043f1  _ZNSt8bad_castC2ERKS_                                                                                                         
+000043e5  _ZNSt8bad_castC2Ev                                                                                                            
+000043d7  _ZNSt8bad_castD0Ev                                                                                                            
+000043cf  _ZNSt8bad_castD1Ev                                                                                                            
+000043cf  _ZNSt8bad_castD2Ev                                                                                                            
+000043c3  _ZNSt8bad_castaSERKS_                                                                                                         
+000053cf  _ZNSt9bad_allocC1ERKS_                                                                                                        
+000053c3  _ZNSt9bad_allocC1Ev                                                                                                           
+000053cf  _ZNSt9bad_allocC2ERKS_                                                                                                        
+000053c3  _ZNSt9bad_allocC2Ev                                                                                                           
+000053b5  _ZNSt9bad_allocD0Ev                                                                                                           
+000053ad  _ZNSt9bad_allocD1Ev                                                                                                           
+000053ad  _ZNSt9bad_allocD2Ev                                                                                                           
+000053a1  _ZNSt9bad_allocaSERKS_                                                                                                        
+000052cf  _ZNSt9exceptionC1ERKS_                                                                                                        
+000052c9  _ZNSt9exceptionC1Ev                                                                                                           
+000052cf  _ZNSt9exceptionC2ERKS_                                                                                                        
+000052c9  _ZNSt9exceptionC2Ev                                                                                                           
+000052c1  _ZNSt9exceptionD0Ev                                                                                                           
+000052bf  _ZNSt9exceptionD1Ev                                                                                                           
+000052bf  _ZNSt9exceptionD2Ev                                                                                                           
+000052bd  _ZNSt9exceptionaSERKS_                                                                                                        
+000043bb  _ZNSt9type_infoD0Ev                                                                                                           
+000043b9  _ZNSt9type_infoD1Ev                                                                                                           
+000043b9  _ZNSt9type_infoD2Ev                                                                                                           
+000029cd  _ZSt10unexpectedv                                                                                                             
+00002b85  _ZSt13set_terminatePFvvE                                                                                                      
+00002b75  _ZSt14set_unexpectedPFvvE                                                                                                     
+200004d4  _ZSt16__dummy_typeinfo                                                                                                        
+00002b5f  _ZSt18uncaught_exceptionv                                                                                                     
+000043b1  _ZSt21__gen_dummy_typeinfosv                                                                                                  
+00002895  _ZSt9terminatev                                                                                                               
+00005b80  _ZTIN10__cxxabiv117__class_type_infoE                                                                                         
+00005b8c  _ZTIN10__cxxabiv117__pbase_type_infoE                                                                                         
+00005b98  _ZTIN10__cxxabiv119__pointer_type_infoE                                                                                       
+00005ba4  _ZTIN10__cxxabiv120__si_class_type_infoE                                                                                      
+00005bb0  _ZTIN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+00005bbc  _ZTIN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00005af8  _ZTIPKe                                                                                                                       
+00005bc8  _ZTISt10bad_typeid                                                                                                            
+00005bd4  _ZTISt13bad_exception                                                                                                         
+00005be0  _ZTISt8bad_cast                                                                                                               
+00005bec  _ZTISt9bad_alloc                                                                                                              
+00005c04  _ZTISt9exception                                                                                                              
+00005c0c  _ZTISt9type_info                                                                                                              
+00005c14  _ZTIe                                                                                                                         
+00005c1c  _ZTIv                                                                                                                         
+00005a39  _ZTSN10__cxxabiv117__class_type_infoE                                                                                         
+00005a5b  _ZTSN10__cxxabiv117__pbase_type_infoE                                                                                         
+00005a15  _ZTSN10__cxxabiv119__pointer_type_infoE                                                                                       
+000059f0  _ZTSN10__cxxabiv120__si_class_type_infoE                                                                                      
+000059ca  _ZTSN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+000059a2  _ZTSN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00005c24  _ZTSPKe                                                                                                                       
+00005b48  _ZTSSt10bad_typeid                                                                                                            
+00005ae4  _ZTSSt13bad_exception                                                                                                         
+00005bf8  _ZTSSt8bad_cast                                                                                                               
+00005b57  _ZTSSt9bad_alloc                                                                                                              
+00005b64  _ZTSSt9exception                                                                                                              
+00005b71  _ZTSSt9type_info                                                                                                              
+00005a7d  _ZTSe                                                                                                                         
+00005af6  _ZTSv                                                                                                                         
+00005b08  _ZTVN10__cxxabiv117__class_type_infoE                                                                                         
+00005b18  _ZTVN10__cxxabiv119__pointer_type_infoE                                                                                       
+00005b28  _ZTVN10__cxxabiv120__si_class_type_infoE                                                                                      
+00005b38  _ZTVN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00005a80  _ZTVSt10bad_typeid                                                                                                            
+00005a94  _ZTVSt13bad_exception                                                                                                         
+00005aa8  _ZTVSt8bad_cast                                                                                                               
+00005abc  _ZTVSt9bad_alloc                                                                                                              
+00005ad0  _ZTVSt9exception                                                                                                              
+0000574d  _ZdlPv                                                                                                                        
+00005555  _Znwj                                                                                                                         
+2000046c  __STACK_END                                                                                                                   
+00000200  __STACK_SIZE                                                                                                                  
+2000046c  __STACK_TOP                                                                                                                   
+00000008  __SYSMEM_SIZE                                                                                                                 
+00006080  __TI_CINIT_Base                                                                                                               
+00006098  __TI_CINIT_Limit                                                                                                              
+00006064  __TI_Handler_Table_Base                                                                                                       
+00006070  __TI_Handler_Table_Limit                                                                                                      
+000050af  __TI_Install_CoreRegs                                                                                                         
+00006368  __TI_UNWIND_TABLE_END                                                                                                         
+00006098  __TI_UNWIND_TABLE_START                                                                                                       
+000033a9  __TI_Unwind_RaiseException                                                                                                    
+0000436b  __TI_Unwind_RaiseException2                                                                                                   
+00004333  __TI_Unwind_Resume                                                                                                            
+00004f95  __TI_auto_init                                                                                                                
+200004ec  __TI_cleanup_ptr                                                                                                              
+00002b53  __TI_cxa_end_cleanup                                                                                                          
+0000514d  __TI_decompress_lzss                                                                                                          
+000056fd  __TI_decompress_none                                                                                                          
+200004f0  __TI_dtors_ptr                                                                                                                
+200004f4  __TI_enable_exit_profile_output                                                                                               
+ffffffff  __TI_pprof_out_hndl                                                                                                           
+000050d7  __TI_preserve_low_VFP                                                                                                         
+ffffffff  __TI_prof_data_size                                                                                                           
+ffffffff  __TI_prof_data_start                                                                                                          
+000050dd  __TI_restore_low_VFP                                                                                                          
+00000000  __TI_static_base__                                                                                                            
+00004263  __TI_ut_entry_cmp                                                                                                             
+00005723  __TI_zero_init                                                                                                                
+0000575f  __abort_execution                                                                                                             
+00004e21  __aeabi_cdcmpeq                                                                                                               
+00004e21  __aeabi_cdcmple                                                                                                               
+00005009  __aeabi_d2f                                                                                                                   
+00003f1f  __aeabi_dadd                                                                                                                  
+000044f5  __aeabi_ddiv                                                                                                                  
+0000486d  __aeabi_dmul                                                                                                                  
+00003f15  __aeabi_dsub                                                                                                                  
+000054b5  __aeabi_f2d                                                                                                                   
+00004ea7  __aeabi_memclr                                                                                                                
+00004ea7  __aeabi_memclr4                                                                                                               
+00004ea7  __aeabi_memclr8                                                                                                               
+00004cef  __aeabi_memcpy                                                                                                                
+00004cef  __aeabi_memcpy4                                                                                                               
+00004cef  __aeabi_memcpy8                                                                                                               
+00004ea9  __aeabi_memset                                                                                                                
+00004ea9  __aeabi_memset4                                                                                                               
+00004ea9  __aeabi_memset8                                                                                                               
+0000339f  __aeabi_unwind_cpp_pr0                                                                                                        
+00003395  __aeabi_unwind_cpp_pr1                                                                                                        
+0000338b  __aeabi_unwind_cpp_pr2                                                                                                        
+ffffffff  __binit__                                                                                                                     
+ffffffff  __c_args__                                                                                                                    
+000029f9  __cxa_allocate_exception                                                                                                      
+00002669  __cxa_bad_cast                                                                                                                
+00002085  __cxa_bad_typeid                                                                                                              
+00002855  __cxa_begin_catch                                                                                                             
+00002b41  __cxa_begin_cleanup                                                                                                           
+000028d3  __cxa_call_terminate                                                                                                          
+00002a71  __cxa_call_unexpected                                                                                                         
+000029bb  __cxa_current_exception_type                                                                                                  
+0000296f  __cxa_end_catch                                                                                                               
+000050c9  __cxa_end_cleanup                                                                                                             
+0000294d  __cxa_free_exception                                                                                                          
+00002815  __cxa_get_globals                                                                                                             
+00002915  __cxa_rethrow                                                                                                                 
+000028e5  __cxa_throw                                                                                                                   
+0000268d  __cxa_type_match                                                                                                              
+0000255f  __derived_to_base_conversion                                                                                                  
+000025d9  __dynamic_cast                                                                                                                
+00003d3f  __mpu_init                                                                                                                    
+2000026c  __stack                                                                                                                       
+00000feb  __sti___24_fuzzy_ball_and_plate_cpp_fuzzy                                                                                     
+00005767  __tdeh_init                                                                                                                   
+00005645  _args_main                                                                                                                    
+00005215  _c_int00                                                                                                                      
+20000504  _lock                                                                                                                         
+20000514  _new_handler                                                                                                                  
+00005693  _nop                                                                                                                          
+0000568b  _register_lock                                                                                                                
+00005685  _register_unlock                                                                                                              
+20000520  _sys_memory                                                                                                                   
+000040cb  _system_post_cinit                                                                                                            
+0000577f  _system_pre_init                                                                                                              
+20000508  _unlock                                                                                                                       
+0000526d  abort                                                                                                                         
+ffffffff  binit                                                                                                                         
+0000542f  bsearch                                                                                                                       
+000037d1  calloc                                                                                                                        
+200004e8  check_Uart                                                                                                                    
+0000530d  copy_in                                                                                                                       
+00005275  exit                                                                                                                          
+0000351b  free                                                                                                                          
+200004d0  fuzzy                                                                                                                         
+20000000  g_pfnRAMVectors                                                                                                               
+00004f3d  main                                                                                                                          
+2000050c  main_func_sp                                                                                                                  
+000034b1  malloc                                                                                                                        
+000036e5  memalign                                                                                                                      
+00004cef  memcpy                                                                                                                        
+00004eaf  memset                                                                                                                        
+00003431  minit                                                                                                                         
+000035dd  realloc                                                                                                                       
+200004d8  res_X                                                                                                                         
+200004dc  res_Y                                                                                                                         
+200004e0  ui32Load                                                                                                                      
+200004e4  ui32PWMClock                                                                                                                  
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
 
-address   name                           
--------   ----                           
-00000000  __TI_static_base__             
-00000000  g_pfnVectors                   
-00000200  __STACK_SIZE                   
-0000028d  UARTGetBuffer                  
-000002dd  SEP_UART                       
-000003bf  Config_UART                    
-00000441  Config_PWM                     
-000005cd  GPIOPadConfigSet               
-000006ff  __mpu_init                     
-00000701  SysCtlClockGet                 
-00000811  SysCtlClockSet                 
-00000905  __aeabi_memcpy                 
-00000905  __aeabi_memcpy4                
-00000905  __aeabi_memcpy8                
-00000905  memcpy                         
-000009a1  __aeabi_memclr                 
-000009a1  __aeabi_memclr4                
-000009a1  __aeabi_memclr8                
-000009a3  __aeabi_memset                 
-000009a3  __aeabi_memset4                
-000009a3  __aeabi_memset8                
-000009a9  memset                         
-00000a1b  _system_post_cinit             
-00000a1d  __TI_auto_init                 
-00000a8d  IntEnable                      
-00000af5  __TI_decompress_lzss           
-00000b5d  _c_int00                       
-00000bb1  C$$EXIT                        
-00000bb5  abort                          
-00000bbd  exit                           
-00000c05  copy_in                        
-00000c51  GPIOPinConfigure               
-00000c99  delayMS                        
-00000cb5  main                           
-00000ce1  UARTConfigSetExpClk            
-00000d69  IntRegister                    
-00000d9d  SysCtlPeripheralEnable         
-00000dd1  GPIODirModeSet                 
-00000dfb  PWMGenConfigure                
-00000e1d  UARTDisable                    
-00000e3d  PWMPulseWidthSet               
-00000e5b  UARTIntRegister                
-00000e75  _args_main                     
-00000e8d  SysCtlPWMClockSet              
-00000ea1  UARTEnable                     
-00000eb5  _register_unlock               
-00000ebb  _register_lock                 
-00000ec3  _nop                           
-00000ec9  GPIOPinTypePWM                 
-00000edb  GPIOPinTypeUART                
-00000eed  PWMOutputState                 
-00000eff  IntMasterEnable                
-00000f0f  PWMGenPeriodSet                
-00000f1f  UARTCharsAvail                 
-00000f2d  __TI_decompress_none           
-00000f3b  CPUcpsie                       
-00000f47  PWMGenEnable                   
-00000f53  __TI_zero_init                 
-00000f5f  ResetISR                       
-00000f6b  UARTCharGet                    
-00000f75  UARTIntStatus                  
-00000f7f  UARTIntEnable                  
-00000f87  SysCtlDelay                    
-00000f8d  UARTClockSourceSet             
-00000f93  UARTIntClear                   
-00000f97  _system_pre_init               
-0000119c  __TI_Handler_Table_Base        
-000011a8  __TI_Handler_Table_Limit       
-000011b8  __TI_CINIT_Base                
-000011d0  __TI_CINIT_Limit               
-20000000  g_pfnRAMVectors                
-2000026c  __stack                        
-2000046c  __STACK_END                    
-2000046c  __STACK_TOP                    
-200004d0  res_X                          
-200004d4  res_Y                          
-200004d8  ui32Load                       
-200004dc  ui32PWMClock                   
-200004e0  check_Uart                     
-200004e4  __TI_cleanup_ptr               
-200004e8  __TI_dtors_ptr                 
-200004ec  __TI_enable_exit_profile_output
-200004f0  _lock                          
-200004f4  _unlock                        
-200004f8  main_func_sp                   
-ffffffff  __TI_pprof_out_hndl            
-ffffffff  __TI_prof_data_size            
-ffffffff  __TI_prof_data_start           
-ffffffff  __binit__                      
-ffffffff  __c_args__                     
-ffffffff  binit                          
-UNDEFED   SHT$$INIT_ARRAY$$Base          
-UNDEFED   SHT$$INIT_ARRAY$$Limit         
+address   name                                                                                                                          
+-------   ----                                                                                                                          
+00000000  __TI_static_base__                                                                                                            
+00000001  _Z10Init_Fuzzyv                                                                                                               
+00000008  __SYSMEM_SIZE                                                                                                                 
+00000200  __STACK_SIZE                                                                                                                  
+00000f33  _Z12Fuzzy_OutPutfffffii                                                                                                       
+00000fc3  _Z12limit_outputiii                                                                                                           
+00000feb  __sti___24_fuzzy_ball_and_plate_cpp_fuzzy                                                                                     
+00001011  _ZN11FuzzyOutputC1Ev                                                                                                          
+00001011  _ZN11FuzzyOutputC2Ev                                                                                                          
+00001031  _ZN11FuzzyOutputC1Ei                                                                                                          
+00001031  _ZN11FuzzyOutputC2Ei                                                                                                          
+00001055  _ZN11FuzzyOutputD1Ev                                                                                                          
+00001055  _ZN11FuzzyOutputD2Ev                                                                                                          
+00001085  _ZN11FuzzyOutput8truncateEv                                                                                                   
+00001609  _ZN11FuzzyOutput14getCrispOutputEv                                                                                            
+00001617  _ZN11FuzzyOutput5orderEv                                                                                                      
+00001693  _ZN11FuzzyOutput4swapEP13fuzzySetArrayS1_                                                                                     
+000016bd  _ZN11FuzzyOutput7rebuildEffffffffPfS0_                                                                                        
+000018b9  _ZN16FuzzyCompositionC1Ev                                                                                                     
+000018b9  _ZN16FuzzyCompositionC2Ev                                                                                                     
+000018d1  _ZN16FuzzyCompositionD1Ev                                                                                                     
+000018d1  _ZN16FuzzyCompositionD2Ev                                                                                                     
+000018e3  _ZN16FuzzyComposition8addPointEff                                                                                             
+0000194b  _ZN16FuzzyComposition10checkPointEff                                                                                          
+000019a1  _ZN16FuzzyComposition5buildEv                                                                                                 
+00001a47  _ZN16FuzzyComposition8avaliateEv                                                                                              
+00001d85  _ZN16FuzzyComposition5emptyEv                                                                                                 
+00001da3  _ZN16FuzzyComposition11cleanPointsEP11pointsArray                                                                             
+00001dd9  _ZN16FuzzyComposition7rebuildEP11pointsArrayS1_S1_S1_                                                                         
+00002067  _ZN16FuzzyComposition8rmvPointEP11pointsArray                                                                                 
+00002085  __cxa_bad_typeid                                                                                                              
+0000255f  __derived_to_base_conversion                                                                                                  
+000025d9  __dynamic_cast                                                                                                                
+00002669  __cxa_bad_cast                                                                                                                
+0000268d  __cxa_type_match                                                                                                              
+00002815  __cxa_get_globals                                                                                                             
+00002855  __cxa_begin_catch                                                                                                             
+00002895  _ZSt9terminatev                                                                                                               
+000028d3  __cxa_call_terminate                                                                                                          
+000028e5  __cxa_throw                                                                                                                   
+00002915  __cxa_rethrow                                                                                                                 
+0000294d  __cxa_free_exception                                                                                                          
+0000296f  __cxa_end_catch                                                                                                               
+000029bb  __cxa_current_exception_type                                                                                                  
+000029cd  _ZSt10unexpectedv                                                                                                             
+000029f9  __cxa_allocate_exception                                                                                                      
+00002a71  __cxa_call_unexpected                                                                                                         
+00002b41  __cxa_begin_cleanup                                                                                                           
+00002b53  __TI_cxa_end_cleanup                                                                                                          
+00002b5f  _ZSt18uncaught_exceptionv                                                                                                     
+00002b75  _ZSt14set_unexpectedPFvvE                                                                                                     
+00002b85  _ZSt13set_terminatePFvvE                                                                                                      
+00002ba9  _ZN19FuzzyRuleAntecedentC1Ev                                                                                                  
+00002ba9  _ZN19FuzzyRuleAntecedentC2Ev                                                                                                  
+00002bd9  _ZN19FuzzyRuleAntecedent10joinSingleEP8FuzzySet                                                                               
+00002bfb  _ZN19FuzzyRuleAntecedent11joinWithANDEP8FuzzySetS1_                                                                           
+00002c2f  _ZN19FuzzyRuleAntecedent10joinWithOREP8FuzzySetS1_                                                                            
+00002c63  _ZN19FuzzyRuleAntecedent11joinWithANDEP8FuzzySetPS_                                                                           
+00002c97  _ZN19FuzzyRuleAntecedent11joinWithANDEPS_P8FuzzySet                                                                           
+00002ccb  _ZN19FuzzyRuleAntecedent10joinWithOREP8FuzzySetPS_                                                                            
+00002cff  _ZN19FuzzyRuleAntecedent10joinWithOREPS_P8FuzzySet                                                                            
+00002d33  _ZN19FuzzyRuleAntecedent11joinWithANDEPS_S0_                                                                                  
+00002d67  _ZN19FuzzyRuleAntecedent10joinWithOREPS_S0_                                                                                   
+00002d9b  _ZN19FuzzyRuleAntecedent8evaluateEv                                                                                           
+0000338b  __aeabi_unwind_cpp_pr2                                                                                                        
+00003395  __aeabi_unwind_cpp_pr1                                                                                                        
+0000339f  __aeabi_unwind_cpp_pr0                                                                                                        
+000033a9  __TI_Unwind_RaiseException                                                                                                    
+000033c9  _Z26__TI_targ_setup_call_parm0P15_Unwind_Contextj                                                                             
+000033cd  _Z24__TI_targ_regbuf_installP15_Unwind_Context                                                                                
+000033d5  _Z23__TI_targ_regbuf_set_pcP15_Unwind_Contextj                                                                                
+000033d9  _Z23__TI_targ_regbuf_get_spP15_Unwind_Context                                                                                 
+000033dd  _Z23__TI_targ_regbuf_get_sbP15_Unwind_Context                                                                                 
+000033e1  _Z23__TI_targ_regbuf_get_pcP15_Unwind_Context                                                                                 
+000033e5  _Z22__TI_targ_rtti_addressjP15_Unwind_Context                                                                                 
+000033e7  _Z16__TI_targ_set_prP19_Unwind_Exception_s                                                                                    
+00003431  minit                                                                                                                         
+000034b1  malloc                                                                                                                        
+0000351b  free                                                                                                                          
+000035dd  realloc                                                                                                                       
+000036e5  memalign                                                                                                                      
+000037d1  calloc                                                                                                                        
+00003801  _ZN5FuzzyC1Ev                                                                                                                 
+00003801  _ZN5FuzzyC2Ev                                                                                                                 
+00003831  _ZN5FuzzyD1Ev                                                                                                                 
+00003831  _ZN5FuzzyD2Ev                                                                                                                 
+00003857  _ZN5Fuzzy13addFuzzyInputEP10FuzzyInput                                                                                        
+0000389d  _ZN5Fuzzy14addFuzzyOutputEP11FuzzyOutput                                                                                      
+000038e9  _ZN5Fuzzy12addFuzzyRuleEP9FuzzyRule                                                                                           
+0000392f  _ZN5Fuzzy8setInputEif                                                                                                         
+00003977  _ZN5Fuzzy7fuzzifyEv                                                                                                           
+00003a1b  _ZN5Fuzzy11isFiredRuleEi                                                                                                      
+00003a53  _ZN5Fuzzy9defuzzifyEi                                                                                                         
+00003a8f  _ZN5Fuzzy16cleanFuzzyInputsEP15fuzzyInputArray                                                                                
+00003aab  _ZN5Fuzzy17cleanFuzzyOutputsEP16fuzzyOutputArray                                                                              
+00003ac7  _ZN5Fuzzy15cleanFuzzyRulesEP14fuzzyRuleArray                                                                                  
+00003ae9  _Z24__TI_process_descriptors13_Unwind_PhaseP19_Unwind_Exception_sP15_Unwind_Context15_Unwind_PR_KindPjP19_Unwind_Reason_CodePb
+00003d3f  __mpu_init                                                                                                                    
+00003d61  _Z13UARTGetBufferPc                                                                                                           
+00003db1  _Z8SEP_UARTv                                                                                                                  
+00003e93  _Z11Config_UARTv                                                                                                              
+00003f15  __aeabi_dsub                                                                                                                  
+00003f1f  __aeabi_dadd                                                                                                                  
+000040cb  _system_post_cinit                                                                                                            
+000040cd  _Z10Config_PWMv                                                                                                               
+00004259  _Z13__TI_prel2absPKj                                                                                                          
+00004263  __TI_ut_entry_cmp                                                                                                             
+00004333  __TI_Unwind_Resume                                                                                                            
+0000436b  __TI_Unwind_RaiseException2                                                                                                   
+000043b1  _ZSt21__gen_dummy_typeinfosv                                                                                                  
+000043b9  _ZNSt9type_infoD1Ev                                                                                                           
+000043b9  _ZNSt9type_infoD2Ev                                                                                                           
+000043bb  _ZNSt9type_infoD0Ev                                                                                                           
+000043c3  _ZNSt8bad_castaSERKS_                                                                                                         
+000043cf  _ZNSt8bad_castD1Ev                                                                                                            
+000043cf  _ZNSt8bad_castD2Ev                                                                                                            
+000043d7  _ZNSt8bad_castD0Ev                                                                                                            
+000043e5  _ZNSt8bad_castC1Ev                                                                                                            
+000043e5  _ZNSt8bad_castC2Ev                                                                                                            
+000043f1  _ZNSt8bad_castC1ERKS_                                                                                                         
+000043f1  _ZNSt8bad_castC2ERKS_                                                                                                         
+000043fd  _ZNSt10bad_typeidaSERKS_                                                                                                      
+00004409  _ZNSt10bad_typeidD1Ev                                                                                                         
+00004409  _ZNSt10bad_typeidD2Ev                                                                                                         
+00004411  _ZNSt10bad_typeidD0Ev                                                                                                         
+0000441f  _ZNSt10bad_typeidC1Ev                                                                                                         
+0000441f  _ZNSt10bad_typeidC2Ev                                                                                                         
+0000442b  _ZNSt10bad_typeidC1ERKS_                                                                                                      
+0000442b  _ZNSt10bad_typeidC2ERKS_                                                                                                      
+00004437  _ZNKSt9type_info4nameEv                                                                                                       
+0000443b  _ZNKSt9type_infoneERKS_                                                                                                       
+00004451  _ZNKSt9type_infoeqERKS_                                                                                                       
+00004467  _ZNKSt9type_info6beforeERKS_                                                                                                  
+00004475  _ZNKSt8bad_cast4whatEv                                                                                                        
+00004479  _ZNKSt10bad_typeid4whatEv                                                                                                     
+0000447d  _ZN10__cxxabiv129__pointer_to_member_type_infoD1Ev                                                                            
+0000447d  _ZN10__cxxabiv129__pointer_to_member_type_infoD2Ev                                                                            
+0000447f  _ZN10__cxxabiv129__pointer_to_member_type_infoD0Ev                                                                            
+00004487  _ZN10__cxxabiv123__fundamental_type_infoD1Ev                                                                                  
+00004487  _ZN10__cxxabiv123__fundamental_type_infoD2Ev                                                                                  
+00004489  _ZN10__cxxabiv123__fundamental_type_infoD0Ev                                                                                  
+00004491  _ZN10__cxxabiv121__vmi_class_type_infoD1Ev                                                                                    
+00004491  _ZN10__cxxabiv121__vmi_class_type_infoD2Ev                                                                                    
+00004493  _ZN10__cxxabiv121__vmi_class_type_infoD0Ev                                                                                    
+0000449b  _ZN10__cxxabiv120__si_class_type_infoD1Ev                                                                                     
+0000449b  _ZN10__cxxabiv120__si_class_type_infoD2Ev                                                                                     
+0000449d  _ZN10__cxxabiv120__si_class_type_infoD0Ev                                                                                     
+000044a5  _ZN10__cxxabiv120__function_type_infoD1Ev                                                                                     
+000044a5  _ZN10__cxxabiv120__function_type_infoD2Ev                                                                                     
+000044a7  _ZN10__cxxabiv120__function_type_infoD0Ev                                                                                     
+000044af  _ZN10__cxxabiv119__pointer_type_infoD1Ev                                                                                      
+000044af  _ZN10__cxxabiv119__pointer_type_infoD2Ev                                                                                      
+000044b1  _ZN10__cxxabiv119__pointer_type_infoD0Ev                                                                                      
+000044b9  _ZN10__cxxabiv117__pbase_type_infoD1Ev                                                                                        
+000044b9  _ZN10__cxxabiv117__pbase_type_infoD2Ev                                                                                        
+000044bb  _ZN10__cxxabiv117__pbase_type_infoD0Ev                                                                                        
+000044c3  _ZN10__cxxabiv117__class_type_infoD1Ev                                                                                        
+000044c3  _ZN10__cxxabiv117__class_type_infoD2Ev                                                                                        
+000044c5  _ZN10__cxxabiv117__class_type_infoD0Ev                                                                                        
+000044cd  _ZN10__cxxabiv117__array_type_infoD1Ev                                                                                        
+000044cd  _ZN10__cxxabiv117__array_type_infoD2Ev                                                                                        
+000044cf  _ZN10__cxxabiv117__array_type_infoD0Ev                                                                                        
+000044d7  _ZN10__cxxabiv116__enum_type_infoD1Ev                                                                                         
+000044d7  _ZN10__cxxabiv116__enum_type_infoD2Ev                                                                                         
+000044d9  _ZN10__cxxabiv116__enum_type_infoD0Ev                                                                                         
+000044f5  __aeabi_ddiv                                                                                                                  
+0000462b  GPIOPadConfigSet                                                                                                              
+0000475d  SysCtlClockGet                                                                                                                
+0000486d  __aeabi_dmul                                                                                                                  
+00004969  _ZN7FuzzyIOC1Ev                                                                                                               
+00004969  _ZN7FuzzyIOC2Ev                                                                                                               
+00004975  _ZN7FuzzyIOC1Ei                                                                                                               
+00004975  _ZN7FuzzyIOC2Ei                                                                                                               
+00004995  _ZN7FuzzyIOD1Ev                                                                                                               
+00004995  _ZN7FuzzyIOD2Ev                                                                                                               
+000049a7  _ZN7FuzzyIO8getIndexEv                                                                                                        
+000049b5  _ZN7FuzzyIO13setCrispInputEf                                                                                                  
+000049c9  _ZN7FuzzyIO13getCrispInputEv                                                                                                  
+000049d9  _ZN7FuzzyIO11addFuzzySetEP8FuzzySet                                                                                           
+00004a1f  _ZN7FuzzyIO14resetFuzzySetsEv                                                                                                 
+00004a43  _ZN7FuzzyIO14cleanFuzzySetsEP13fuzzySetArray                                                                                  
+00004a61  SysCtlClockSet                                                                                                                
+00004b55  _ZN8FuzzySetC1Ev                                                                                                              
+00004b55  _ZN8FuzzySetC2Ev                                                                                                              
+00004b61  _ZN8FuzzySetC1Effff                                                                                                           
+00004b61  _ZN8FuzzySetC2Effff                                                                                                           
+00004b9b  _ZN8FuzzySet9getPointAEv                                                                                                      
+00004bab  _ZN8FuzzySet9getPointBEv                                                                                                      
+00004bbb  _ZN8FuzzySet9getPointCEv                                                                                                      
+00004bcb  _ZN8FuzzySet9getPointDEv                                                                                                      
+00004bdb  _ZN8FuzzySet19calculatePertinenceEf                                                                                           
+00004be9  _ZN8FuzzySet13setPertinenceEf                                                                                                 
+00004c11  _ZN8FuzzySet13getPertinenceEv                                                                                                 
+00004c21  _ZN8FuzzySet5resetEv                                                                                                          
+00004c35  _ZN19FuzzyRuleConsequentC1Ev                                                                                                  
+00004c35  _ZN19FuzzyRuleConsequentC2Ev                                                                                                  
+00004c4d  _ZN19FuzzyRuleConsequentD1Ev                                                                                                  
+00004c4d  _ZN19FuzzyRuleConsequentD2Ev                                                                                                  
+00004c5f  _ZN19FuzzyRuleConsequent9addOutputEP8FuzzySet                                                                                 
+00004ca5  _ZN19FuzzyRuleConsequent8evaluateEf                                                                                           
+00004cd3  _ZN19FuzzyRuleConsequent14cleanFuzzySetsEP19fuzzySetOutputArray                                                               
+00004cef  __aeabi_memcpy                                                                                                                
+00004cef  __aeabi_memcpy4                                                                                                               
+00004cef  __aeabi_memcpy8                                                                                                               
+00004cef  memcpy                                                                                                                        
+00004d8b  _ZN9FuzzyRuleC1Ev                                                                                                             
+00004d8b  _ZN9FuzzyRuleC2Ev                                                                                                             
+00004d97  _ZN9FuzzyRuleC1EiP19FuzzyRuleAntecedentP19FuzzyRuleConsequent                                                                 
+00004d97  _ZN9FuzzyRuleC2EiP19FuzzyRuleAntecedentP19FuzzyRuleConsequent                                                                 
+00004dc1  _ZN9FuzzyRule8getIndexEv                                                                                                      
+00004dcf  _ZN9FuzzyRule18evaluateExpressionEv                                                                                           
+00004e13  _ZN9FuzzyRule7isFiredEv                                                                                                       
+00004e21  __aeabi_cdcmpeq                                                                                                               
+00004e21  __aeabi_cdcmple                                                                                                               
+00004ea7  __aeabi_memclr                                                                                                                
+00004ea7  __aeabi_memclr4                                                                                                               
+00004ea7  __aeabi_memclr8                                                                                                               
+00004ea9  __aeabi_memset                                                                                                                
+00004ea9  __aeabi_memset4                                                                                                               
+00004ea9  __aeabi_memset8                                                                                                               
+00004eaf  memset                                                                                                                        
+00004f21  _Z7delayMSi                                                                                                                   
+00004f3d  main                                                                                                                          
+00004f95  __TI_auto_init                                                                                                                
+00005009  __aeabi_d2f                                                                                                                   
+00005077  _Unwind_RaiseException                                                                                                        
+00005099  _Unwind_Resume                                                                                                                
+000050af  __TI_Install_CoreRegs                                                                                                         
+000050c9  __cxa_end_cleanup                                                                                                             
+000050d7  __TI_preserve_low_VFP                                                                                                         
+000050dd  __TI_restore_low_VFP                                                                                                          
+000050e5  IntEnable                                                                                                                     
+0000514d  __TI_decompress_lzss                                                                                                          
+000051b5  _ZN10FuzzyInputC1Ev                                                                                                           
+000051b5  _ZN10FuzzyInputC2Ev                                                                                                           
+000051c3  _ZN10FuzzyInputC1Ei                                                                                                           
+000051c3  _ZN10FuzzyInputC2Ei                                                                                                           
+000051d5  _ZN10FuzzyInputD1Ev                                                                                                           
+000051d5  _ZN10FuzzyInputD2Ev                                                                                                           
+000051e3  _ZN10FuzzyInput28calculateFuzzySetPertinencesEv                                                                               
+00005215  _c_int00                                                                                                                      
+00005269  C$$EXIT                                                                                                                       
+0000526d  abort                                                                                                                         
+00005275  exit                                                                                                                          
+000052bd  _ZNSt9exceptionaSERKS_                                                                                                        
+000052bf  _ZNSt9exceptionD1Ev                                                                                                           
+000052bf  _ZNSt9exceptionD2Ev                                                                                                           
+000052c1  _ZNSt9exceptionD0Ev                                                                                                           
+000052c9  _ZNSt9exceptionC1Ev                                                                                                           
+000052c9  _ZNSt9exceptionC2Ev                                                                                                           
+000052cf  _ZNSt9exceptionC1ERKS_                                                                                                        
+000052cf  _ZNSt9exceptionC2ERKS_                                                                                                        
+000052d5  _ZNSt13bad_exceptionaSERKS_                                                                                                   
+000052d7  _ZNSt13bad_exceptionD1Ev                                                                                                      
+000052d7  _ZNSt13bad_exceptionD2Ev                                                                                                      
+000052d9  _ZNSt13bad_exceptionD0Ev                                                                                                      
+000052e1  _ZNSt13bad_exceptionC1Ev                                                                                                      
+000052e1  _ZNSt13bad_exceptionC2Ev                                                                                                      
+000052ed  _ZNSt13bad_exceptionC1ERKS_                                                                                                   
+000052ed  _ZNSt13bad_exceptionC2ERKS_                                                                                                   
+000052f9  _ZNKSt9exception4whatEv                                                                                                       
+000052fd  _ZNKSt13bad_exception4whatEv                                                                                                  
+0000530d  copy_in                                                                                                                       
+00005359  GPIOPinConfigure                                                                                                              
+000053a1  _ZNSt9bad_allocaSERKS_                                                                                                        
+000053ad  _ZNSt9bad_allocD1Ev                                                                                                           
+000053ad  _ZNSt9bad_allocD2Ev                                                                                                           
+000053b5  _ZNSt9bad_allocD0Ev                                                                                                           
+000053c3  _ZNSt9bad_allocC1Ev                                                                                                           
+000053c3  _ZNSt9bad_allocC2Ev                                                                                                           
+000053cf  _ZNSt9bad_allocC1ERKS_                                                                                                        
+000053cf  _ZNSt9bad_allocC2ERKS_                                                                                                        
+000053db  _ZNKSt9bad_alloc4whatEv                                                                                                       
+000053e9  UARTConfigSetExpClk                                                                                                           
+0000542f  bsearch                                                                                                                       
+000054b5  __aeabi_f2d                                                                                                                   
+000054ed  IntRegister                                                                                                                   
+00005521  SysCtlPeripheralEnable                                                                                                        
+00005555  _Znwj                                                                                                                         
+00005581  GPIODirModeSet                                                                                                                
+000055ab  PWMGenConfigure                                                                                                               
+000055cd  UARTDisable                                                                                                                   
+000055ed  _Z21__default_new_handlerv                                                                                                    
+0000560d  PWMPulseWidthSet                                                                                                              
+0000562b  UARTIntRegister                                                                                                               
+00005645  _args_main                                                                                                                    
+0000565d  SysCtlPWMClockSet                                                                                                             
+00005671  UARTEnable                                                                                                                    
+00005685  _register_unlock                                                                                                              
+0000568b  _register_lock                                                                                                                
+00005693  _nop                                                                                                                          
+00005699  GPIOPinTypePWM                                                                                                                
+000056ab  GPIOPinTypeUART                                                                                                               
+000056bd  PWMOutputState                                                                                                                
+000056cf  IntMasterEnable                                                                                                               
+000056df  PWMGenPeriodSet                                                                                                               
+000056ef  UARTCharsAvail                                                                                                                
+000056fd  __TI_decompress_none                                                                                                          
+0000570b  CPUcpsie                                                                                                                      
+00005717  PWMGenEnable                                                                                                                  
+00005723  __TI_zero_init                                                                                                                
+0000572f  UARTCharGet                                                                                                                   
+00005739  UARTCharPut                                                                                                                   
+00005743  UARTIntStatus                                                                                                                 
+0000574d  _ZdlPv                                                                                                                        
+00005757  UARTIntEnable                                                                                                                 
+0000575f  __abort_execution                                                                                                             
+00005767  __tdeh_init                                                                                                                   
+0000576f  SysCtlDelay                                                                                                                   
+00005775  UARTClockSourceSet                                                                                                            
+0000577b  UARTIntClear                                                                                                                  
+0000577f  _system_pre_init                                                                                                              
+000059a2  _ZTSN10__cxxabiv123__fundamental_type_infoE                                                                                   
+000059ca  _ZTSN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+000059f0  _ZTSN10__cxxabiv120__si_class_type_infoE                                                                                      
+00005a15  _ZTSN10__cxxabiv119__pointer_type_infoE                                                                                       
+00005a39  _ZTSN10__cxxabiv117__class_type_infoE                                                                                         
+00005a5b  _ZTSN10__cxxabiv117__pbase_type_infoE                                                                                         
+00005a7d  _ZTSe                                                                                                                         
+00005a80  _ZTVSt10bad_typeid                                                                                                            
+00005a94  _ZTVSt13bad_exception                                                                                                         
+00005aa8  _ZTVSt8bad_cast                                                                                                               
+00005abc  _ZTVSt9bad_alloc                                                                                                              
+00005ad0  _ZTVSt9exception                                                                                                              
+00005ae4  _ZTSSt13bad_exception                                                                                                         
+00005af6  _ZTSv                                                                                                                         
+00005af8  _ZTIPKe                                                                                                                       
+00005b08  _ZTVN10__cxxabiv117__class_type_infoE                                                                                         
+00005b18  _ZTVN10__cxxabiv119__pointer_type_infoE                                                                                       
+00005b28  _ZTVN10__cxxabiv120__si_class_type_infoE                                                                                      
+00005b38  _ZTVN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00005b48  _ZTSSt10bad_typeid                                                                                                            
+00005b57  _ZTSSt9bad_alloc                                                                                                              
+00005b64  _ZTSSt9exception                                                                                                              
+00005b71  _ZTSSt9type_info                                                                                                              
+00005b80  _ZTIN10__cxxabiv117__class_type_infoE                                                                                         
+00005b8c  _ZTIN10__cxxabiv117__pbase_type_infoE                                                                                         
+00005b98  _ZTIN10__cxxabiv119__pointer_type_infoE                                                                                       
+00005ba4  _ZTIN10__cxxabiv120__si_class_type_infoE                                                                                      
+00005bb0  _ZTIN10__cxxabiv121__vmi_class_type_infoE                                                                                     
+00005bbc  _ZTIN10__cxxabiv123__fundamental_type_infoE                                                                                   
+00005bc8  _ZTISt10bad_typeid                                                                                                            
+00005bd4  _ZTISt13bad_exception                                                                                                         
+00005be0  _ZTISt8bad_cast                                                                                                               
+00005bec  _ZTISt9bad_alloc                                                                                                              
+00005bf8  _ZTSSt8bad_cast                                                                                                               
+00005c04  _ZTISt9exception                                                                                                              
+00005c0c  _ZTISt9type_info                                                                                                              
+00005c14  _ZTIe                                                                                                                         
+00005c1c  _ZTIv                                                                                                                         
+00005c24  _ZTSPKe                                                                                                                       
+00005c28  SHT$$INIT_ARRAY$$Base                                                                                                         
+00005c2c  SHT$$INIT_ARRAY$$Limit                                                                                                        
+00006064  __TI_Handler_Table_Base                                                                                                       
+00006070  __TI_Handler_Table_Limit                                                                                                      
+00006080  __TI_CINIT_Base                                                                                                               
+00006098  .ARM.exidx$$Base                                                                                                              
+00006098  __TI_CINIT_Limit                                                                                                              
+00006098  __TI_UNWIND_TABLE_START                                                                                                       
+00006368  .ARM.exidx$$Limit                                                                                                             
+00006368  __TI_UNWIND_TABLE_END                                                                                                         
+20000000  g_pfnRAMVectors                                                                                                               
+2000026c  __stack                                                                                                                       
+2000046c  __STACK_END                                                                                                                   
+2000046c  __STACK_TOP                                                                                                                   
+200004d0  fuzzy                                                                                                                         
+200004d4  _ZSt16__dummy_typeinfo                                                                                                        
+200004d8  res_X                                                                                                                         
+200004dc  res_Y                                                                                                                         
+200004e0  ui32Load                                                                                                                      
+200004e4  ui32PWMClock                                                                                                                  
+200004e8  check_Uart                                                                                                                    
+200004ec  __TI_cleanup_ptr                                                                                                              
+200004f0  __TI_dtors_ptr                                                                                                                
+200004f4  __TI_enable_exit_profile_output                                                                                               
+20000504  _lock                                                                                                                         
+20000508  _unlock                                                                                                                       
+2000050c  main_func_sp                                                                                                                  
+20000514  _new_handler                                                                                                                  
+20000520  _sys_memory                                                                                                                   
+ffffffff  __TI_pprof_out_hndl                                                                                                           
+ffffffff  __TI_prof_data_size                                                                                                           
+ffffffff  __TI_prof_data_start                                                                                                          
+ffffffff  __binit__                                                                                                                     
+ffffffff  __c_args__                                                                                                                    
+ffffffff  binit                                                                                                                         
 
-[93 symbols]
+[386 symbols]
