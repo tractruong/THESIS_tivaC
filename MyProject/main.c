@@ -16,12 +16,12 @@ void main(void)
     SysCtlClockSet(SYSCTL_SYSDIV_4 | SYSCTL_USE_PLL | SYSCTL_OSC_MAIN | SYSCTL_XTAL_16MHZ); //50Mhz
     Config_PWM();
     Config_UART();
-    Config_Systick(SAMPLING_RATE);
+ //   Config_Systick(SAMPLING_RATE);
     //res_X = 0;
     //res_Y = 0;
    // Inverse(0,0,0);
     IntMasterEnable();
-    Init_Fuzzy();
+//    Init_Fuzzy();
     while(1)
     {
 

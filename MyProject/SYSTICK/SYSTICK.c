@@ -8,7 +8,8 @@
 //#include "SYSTICK.h"
 
 #define SAMPLING_RATE 10
-
+int j=0;
+    char s[50] = {0};
 
 static double posX = 0;
 static double posY = 0;
@@ -60,8 +61,8 @@ static void Systick_ISR(void)
             pre_errX = errX;
             pre_errY = errY;
 
-            angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
-            angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
+//            angleX = Fuzzy_OutPut((float)errX, (float)velX, (float)scale_errX, (float)scale_velX, (float)scale_outX, -10, 10);
+//           angleY = (-Fuzzy_OutPut((float)errY, (float)velY, (float)scale_errY, (float)scale_velY, (float)scale_outY, -10, 10));
 
             Inverse(angleX,angleY,0);
             PWMPulseWidthSet(PWM0_BASE,PWM_OUT_1,1272-GetAlpha(0)*469/60); //servo2--PB7
