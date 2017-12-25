@@ -14,8 +14,6 @@ ORDERED_OBJS += \
 "./PWM/PWM.obj" \
 "./SYSTICK/SYSTICK.obj" \
 "./UART/UART.obj" \
-"./UART/uartstdio.obj" \
-"./UART/ustdlib.obj" \
 "./eFLL/Fuzzy.obj" \
 "./eFLL/FuzzyComposition.obj" \
 "./eFLL/FuzzyIO.obj" \
@@ -26,9 +24,10 @@ ORDERED_OBJS += \
 "./eFLL/FuzzyRuleConsequent.obj" \
 "./eFLL/FuzzySet.obj" \
 "./eFLL/fuzzy_ball_and_plate.obj" \
-"/home/trac/ti/TivaWare_C_Series-2.1.4.178/driverlib/ccs/Debug/driverlib.lib" \
+"../driverlib.lib" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
+-llibc.a \
 
 -include ../makefile.init
 
@@ -158,14 +157,14 @@ BIN_OUTPUTS__QUOTED += \
 
 
 # All Target
-all: $(OBJS) $(CMD_SRCS) $(LDS_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@$(MAKE) --no-print-directory -Onone "MyProject.out"
 
 # Tool invocations
-MyProject.out: $(OBJS) $(CMD_SRCS) $(LDS_SRCS) $(LIB_SRCS) $(GEN_CMDS)
+MyProject.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"/home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --c99 --rtti --cpp_default --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"MyProject.map" --heap_size=0 --stack_size=512 -i"/home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib" -i"/home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MyProject_linkInfo.xml" --rom_model -o "MyProject.out" $(ORDERED_OBJS)
+	"/home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me --define=ccs="ccs" --define=PART_TM4C123GH6PM -g --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"MyProject.map" --heap_size=0 --stack_size=512 -i"/home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib" -i"/home/trac/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MyProject_linkInfo.xml" --rom_model -o "MyProject.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -178,9 +177,9 @@ MyProject.hex: $(EXE_OUTPUTS)
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "INVERSE/INVERSE.obj" "PWM/PWM.obj" "SYSTICK/SYSTICK.obj" "UART/UART.obj" "UART/uartstdio.obj" "UART/ustdlib.obj" "eFLL/Fuzzy.obj" "eFLL/FuzzyComposition.obj" "eFLL/FuzzyIO.obj" "eFLL/FuzzyInput.obj" "eFLL/FuzzyOutput.obj" "eFLL/FuzzyRule.obj" "eFLL/FuzzyRuleAntecedent.obj" "eFLL/FuzzyRuleConsequent.obj" "eFLL/FuzzySet.obj" "eFLL/fuzzy_ball_and_plate.obj" 
-	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "INVERSE/INVERSE.d" "PWM/PWM.d" "SYSTICK/SYSTICK.d" "UART/UART.d" "UART/uartstdio.d" "UART/ustdlib.d" 
-	-$(RM) "eFLL/Fuzzy.d" "eFLL/FuzzyComposition.d" "eFLL/FuzzyIO.d" "eFLL/FuzzyInput.d" "eFLL/FuzzyOutput.d" "eFLL/FuzzyRule.d" "eFLL/FuzzyRuleAntecedent.d" "eFLL/FuzzyRuleConsequent.d" "eFLL/FuzzySet.d" "eFLL/fuzzy_ball_and_plate.d" 
+	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "INVERSE/INVERSE.obj" "PWM/PWM.obj" "SYSTICK/SYSTICK.obj" "UART/UART.obj" "eFLL/Fuzzy.obj" "eFLL/FuzzyComposition.obj" "eFLL/FuzzyIO.obj" "eFLL/FuzzyInput.obj" "eFLL/FuzzyOutput.obj" "eFLL/FuzzyRule.obj" "eFLL/FuzzyRuleAntecedent.obj" "eFLL/FuzzyRuleConsequent.obj" "eFLL/FuzzySet.obj" "eFLL/fuzzy_ball_and_plate.obj" 
+	-$(RM) "tm4c123gh6pm_startup_ccs.d" 
+	-$(RM) "main.d" "INVERSE/INVERSE.d" "PWM/PWM.d" "SYSTICK/SYSTICK.d" "UART/UART.d" "eFLL/Fuzzy.d" "eFLL/FuzzyComposition.d" "eFLL/FuzzyIO.d" "eFLL/FuzzyInput.d" "eFLL/FuzzyOutput.d" "eFLL/FuzzyRule.d" "eFLL/FuzzyRuleAntecedent.d" "eFLL/FuzzyRuleConsequent.d" "eFLL/FuzzySet.d" "eFLL/fuzzy_ball_and_plate.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

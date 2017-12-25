@@ -1,6 +1,6 @@
 /*
  * Robotic Research Group (RRG)
- * State University of Piaui (UESPI), Brazil - Piauí - Teresina
+ *
  *
  * FuzzyRuleAntecedent.h
  *
@@ -12,7 +12,7 @@
 #ifndef FUZZYRULEANTECEDENT_H
 #define FUZZYRULEANTECEDENT_H
 
-// IMPORTANDO AS BIBLIOTECAS NECESSÁRIAS
+//
 #include <stdlib.h>
 #include "FuzzySet.h"
 
@@ -28,7 +28,7 @@ class FuzzyRuleAntecedent {
     public:
         // CONSTRUTORES
         FuzzyRuleAntecedent();
-        // MÉTODOS PÚBLICOS
+
         bool joinSingle(FuzzySet* fuzzySet);
         bool joinWithAND(FuzzySet* fuzzySet1, FuzzySet* fuzzySet2);
         bool joinWithOR(FuzzySet* fuzzySet1, FuzzySet* fuzzySet2);
@@ -41,8 +41,8 @@ class FuzzyRuleAntecedent {
         float evaluate();
 
     private:
-        // VARIÁVEIS PRIVADAS
-        int op; // operador lógico
+
+        int op;
         int mode;
         FuzzySet* fuzzySet1;
         FuzzySet* fuzzySet2;

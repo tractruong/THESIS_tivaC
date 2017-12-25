@@ -3,22 +3,22 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-C_SRCS += \
-../SYSTICK/SYSTICK.c 
-
-C_DEPS += \
-./SYSTICK/SYSTICK.d 
+CPP_SRCS += \
+../SYSTICK/SYSTICK.cpp 
 
 OBJS += \
 ./SYSTICK/SYSTICK.obj 
 
+CPP_DEPS += \
+./SYSTICK/SYSTICK.d 
+
 OBJS__QUOTED += \
 "SYSTICK/SYSTICK.obj" 
 
-C_DEPS__QUOTED += \
+CPP_DEPS__QUOTED += \
 "SYSTICK/SYSTICK.d" 
 
-C_SRCS__QUOTED += \
-"../SYSTICK/SYSTICK.c" 
+CPP_SRCS__QUOTED += \
+"../SYSTICK/SYSTICK.cpp" 
 
 

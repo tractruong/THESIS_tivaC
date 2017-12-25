@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "FuzzyRuleConsequent.hpp"
+#include "FuzzyRuleConsequent.h"
 
 // CONSTRUTORES
 FuzzyRuleConsequent::FuzzyRuleConsequent(){

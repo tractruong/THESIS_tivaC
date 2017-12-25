@@ -9,7 +9,7 @@ CMD_SRCS += \
 ../tm4c123gh6pm.cmd 
 
 LIB_SRCS += \
-E:/WORKSPACE_THESIS/driverlib/ccs/Debug/driverlib.lib 
+D:/ti/driverlib/ccs/Debug/driverlib.lib 
 
 C_SRCS += \
 ../main.c \

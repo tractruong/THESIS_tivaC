@@ -1,6 +1,6 @@
 /*
  * Robotic Research Group (RRG)
- * State University of Piaui (UESPI), Brazil - Piauí - Teresina
+ * State University of Piaui (UESPI), Brazil - � - Teresina
  *
  * FuzzyIO.h
  *
@@ -12,10 +12,15 @@
 #ifndef FUZZYIO_H
 #define FUZZYIO_H
 
-// IMPORTANDO AS BIBLIOTECAS NECESSÁRIAS
+// IMPORTANDO AS BIBLIOTECAS
 #include <stdlib.h>
 #include "FuzzySet.h"
 
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 // Estrutura de uma lista de FuzzySet
 struct fuzzySetArray{
     FuzzySet* fuzzySet;
@@ -29,7 +34,7 @@ class FuzzyIO {
         FuzzyIO(int index);
         // DESTRUTOR
         ~FuzzyIO();
-        // MÉTODOS PÚBLICOS
+
         int getIndex();
         void setCrispInput(float crispInput);
         float getCrispInput();
@@ -37,12 +42,16 @@ class FuzzyIO {
         void resetFuzzySets();
 
     protected:
-        // VARIÁVEIS PROTEGIDAS
+
         int index;
         float crispInput;
         fuzzySetArray* fuzzySets;
         fuzzySetArray* fuzzySetsCursor;
-        // MÉTODOS PROTEGIDOS
+
         void cleanFuzzySets(fuzzySetArray* aux);
 };
+
+#ifdef __cplusplus
+}
+#endif
 #endif

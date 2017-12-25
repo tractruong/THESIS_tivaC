@@ -1,6 +1,6 @@
 /*
  * Robotic Research Group (RRG)
- * State University of Piaui (UESPI), Brazil - Piauí - Teresina
+ * State University of Piaui (UESPI)
  *
  * FuzzyRule.h
  *
@@ -12,22 +12,22 @@
 #ifndef FUZZYRULE_H
 #define FUZZYRULE_H
 
-// IMPORTANDO AS BIBLIOTECAS NECESSÁRIAS
-#include "FuzzyRuleAntecedent.hpp"
-#include "FuzzyRuleConsequent.hpp"
+// IMPORTANDO AS BIBLIOTECAS
+#include "FuzzyRuleAntecedent.h"
+#include "FuzzyRuleConsequent.h"
 
 class FuzzyRule {
     public:
         // CONSTRUTORES
         FuzzyRule();
         FuzzyRule(int index, FuzzyRuleAntecedent* fuzzyRuleAntecedent, FuzzyRuleConsequent* fuzzyRuleConsequent);
-        // MÉTODOS PÚBLICOS
+
         int getIndex();
         bool evaluateExpression();
         bool isFired();
 
     private:
-        // VARIÁVEIS PRIVADAS
+
         int index;
         bool fired;
         FuzzyRuleAntecedent* fuzzyRuleAntecedent;

@@ -1,3 +1,4 @@
+#include "../include.h"
 #include "../eFLL/fuzzy_ball_and_plate.h"
 
 Fuzzy* fuzzy = new Fuzzy();

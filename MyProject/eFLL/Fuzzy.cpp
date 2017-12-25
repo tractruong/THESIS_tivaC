@@ -9,7 +9,7 @@
  *          Co authors: Douglas S. Kridi <douglaskridi@gmail.com>
  *                      Kannya Leal <kannyal@hotmail.com>
  */
-#include "Fuzzy.hpp"
+#include "Fuzzy.h"
 
 // CONSTRUTORES
 Fuzzy::Fuzzy(){

@@ -1,6 +1,6 @@
 /*
  * Robotic Research Group (RRG)
- * State University of Piaui (UESPI), Brazil - Piauí - Teresina
+ * State University of Piaui (UESPI), Brazil - � - Teresina
  *
  * FuzzyComposition.h
  *
@@ -12,7 +12,7 @@
 #ifndef FUZZYCOMPOSITION_H
 #define FUZZYCOMPOSITION_H
 
-// IMPORTANDO AS BIBLIOTECAS NECESSÁRIAS
+// IMPORTANDO AS BIBLIOTECAS
 #include <stdlib.h>
 
 // CONSTANTES
@@ -32,7 +32,7 @@ class FuzzyComposition{
         FuzzyComposition();
         // DESTRUTOR
         ~FuzzyComposition();
-        // MÉTODOS PÚBLICOS
+
         bool addPoint(float point, float pertinence);
         bool checkPoint(float point, float pertinence);
         bool build();
@@ -40,11 +40,11 @@ class FuzzyComposition{
         bool empty();
 
     private:
-        // VARIÁVEIS PRIVADAS
+
         pointsArray* pointsCursor;
         pointsArray* points;
 
-        // MÉTODOS PRIVADOS
+
         void cleanPoints(pointsArray* aux);
         bool rebuild(pointsArray* aSegmentBegin, pointsArray* aSegmentEnd, pointsArray* bSegmentBegin, pointsArray* bSegmentEnd);
         bool rmvPoint(pointsArray* point);

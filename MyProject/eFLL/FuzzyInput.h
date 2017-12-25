@@ -1,6 +1,6 @@
 /*
  * Robotic Research Group (RRG)
- * State University of Piaui (UESPI), Brazil - Piauí - Teresina
+ * State University of Piaui (UESPI), Brazil - � - Teresina
  *
  * FuzzyInput.h
  *
@@ -12,7 +12,7 @@
 #ifndef FUZZYINPUT_H
 #define FUZZYINPUT_H
 
-// IMPORTANDO AS BIBLIOTECAS NECESSÁRIAS
+// IMPORTANDO AS BIBLIOTECAS
 #include "FuzzyIO.h"
 
 class FuzzyInput : public FuzzyIO {
@@ -22,7 +22,7 @@ class FuzzyInput : public FuzzyIO {
         FuzzyInput(int index);
         // DESTRUTOR
         ~FuzzyInput();
-        // MÉTODOS PÚBLICOS
+
         bool calculateFuzzySetPertinences();
 };
 #endif

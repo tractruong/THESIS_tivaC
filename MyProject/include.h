@@ -36,6 +36,7 @@
 #include "driverlib/uart.h"
 #include "driverlib/rom.h"
 #include "driverlib/systick.h"
+#include "eFLL/fuzzy_ball_and_plate.h"
 //thu vien ho tro phan cung
 #include "inc/hw_ints.h"
 #include "inc/hw_gpio.h"
@@ -47,9 +48,9 @@
 #include "PWM/PWM.h"
 //#include "GPIO/GPIO.h"
 #include "UART/UART.h"
-#include "UART/uartstdio.h"
-#include "UART/ustdlib.h"
+//#include "UART/uartstdio.h"
+//#include "UART/ustdlib.h"
 #include "SYSTICK/SYSTICK.h"
-#include "eFLL/fuzzy_ball_and_plate.h"
+
 
 #endif /* INCLUDE_H_ */

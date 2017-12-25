@@ -12,12 +12,17 @@
 #ifndef FUZZYSET_H
 #define FUZZYSET_H
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 class FuzzySet {
     public:
         // CONSTRUTORES
         FuzzySet();
         FuzzySet(float a, float b, float c, float d);
-        // MÉTODOS PÚBLICOS
+
         float getPointA();
         float getPointB();
         float getPointC();
@@ -28,11 +33,15 @@ class FuzzySet {
         void reset();
 
     private:
-        // VARIÁVEIS
+
         float a;
         float b;
         float c;
         float d;
         float pertinence;
 };
+
+#ifdef __cplusplus
+}
+#endif
 #endif

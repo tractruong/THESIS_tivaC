@@ -1,6 +1,6 @@
 /*
  * Robotic Research Group (RRG)
- * State University of Piaui (UESPI), Brazil - Piauí - Teresina
+ * State University of Piaui (UESPI), Brazil - � - Teresina
  *
  * Fuzzy.h
  *
@@ -12,11 +12,11 @@
 #ifndef FUZZY_H
 #define FUZZY_H
 
-// IMPORTANDO AS BIBLIOTECAS NECESSÁRIAS
+// IMPORTANDO AS BIBLIOTECAS
 #include <inttypes.h>
 #include "FuzzyInput.h"
 #include "FuzzyOutput.h"
-#include "FuzzyRule.h"
+#include "FuzzyRule.hpp"
 
 // Estrutura de uma matriz de fuzzyInputArray
 struct fuzzyInputArray{
@@ -42,7 +42,7 @@ class Fuzzy {
         Fuzzy();
         // DESTRUTOR
         ~Fuzzy();
-        // MÉTODOS PÚBLICOS
+
         bool addFuzzyInput(FuzzyInput* fuzzyInput);
         bool addFuzzyOutput(FuzzyOutput* fuzzyOutput);
         bool addFuzzyRule(FuzzyRule* fuzzyRule);
@@ -52,7 +52,7 @@ class Fuzzy {
         float defuzzify(int fuzzyOutputIndex);
 
     private:
-        // VARIÁVEIS PRIVADAS
+        //
         // ponteiros para gerenciar os arrays de FuzzyInput
         fuzzyInputArray* fuzzyInputsCursor;
         fuzzyInputArray* fuzzyInputs;
@@ -63,7 +63,7 @@ class Fuzzy {
         fuzzyRuleArray* fuzzyRulesCursor;
         fuzzyRuleArray* fuzzyRules;
 
-        // MÉTODOS PRIVADOS
+
         void cleanFuzzyInputs(fuzzyInputArray* aux);
         void cleanFuzzyOutputs(fuzzyOutputArray* aux);
         void cleanFuzzyRules(fuzzyRuleArray* aux);

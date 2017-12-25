@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS
+CG_TOOL_ROOT := C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS
 
 GEN_OPTS__FLAG := 
 GEN_CMDS__FLAG := 
@@ -19,7 +19,17 @@ ORDERED_OBJS += \
 "./UART/UART.obj" \
 "./UART/uartstdio.obj" \
 "./UART/ustdlib.obj" \
-"E:/WORKSPACE_THESIS/driverlib/ccs/Debug/driverlib.lib" \
+"./eFLL/Fuzzy.obj" \
+"./eFLL/FuzzyComposition.obj" \
+"./eFLL/FuzzyIO.obj" \
+"./eFLL/FuzzyInput.obj" \
+"./eFLL/FuzzyOutput.obj" \
+"./eFLL/FuzzyRule.obj" \
+"./eFLL/FuzzyRuleAntecedent.obj" \
+"./eFLL/FuzzyRuleConsequent.obj" \
+"./eFLL/FuzzySet.obj" \
+"./eFLL/fuzzy_ball_and_plate.obj" \
+"D:/ti/driverlib/ccs/Debug/driverlib.lib" \
 "../tm4c123gh6pm.cmd" \
 $(GEN_CMDS__FLAG) \
 -llibc.a \
@@ -37,12 +47,14 @@ RMDIR := RMDIR /S/Q
 -include PWM/subdir_vars.mk
 -include SYSTICK/subdir_vars.mk
 -include UART/subdir_vars.mk
+-include eFLL/subdir_vars.mk
 -include subdir_rules.mk
 -include GPIO/subdir_rules.mk
 -include INVERSE/subdir_rules.mk
 -include PWM/subdir_rules.mk
 -include SYSTICK/subdir_rules.mk
 -include UART/subdir_rules.mk
+-include eFLL/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -157,24 +169,24 @@ all: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
 
 # Tool invocations
 MyProject.out: $(OBJS) $(CMD_SRCS) $(LIB_SRCS) $(GEN_CMDS)
-	@echo 'Building target: "$@"'
+	@echo 'Building target: $@'
 	@echo 'Invoking: ARM Linker'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=PART_TM4C123GH6PM --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"MyProject.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MyProject_linkInfo.xml" --rom_model -o "MyProject.out" $(ORDERED_OBJS)
-	@echo 'Finished building target: "$@"'
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armcl" -mv7M4 --code_state=16 --float_support=FPv4SPD16 -me -O2 --define=ccs="ccs" --define=PART_TM4C123GH6PM --gcc --diag_warning=225 --diag_wrap=off --display_error_number --abi=eabi -z -m"MyProject.map" --heap_size=0 --stack_size=512 -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/lib" -i"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/include" --reread_libs --diag_wrap=off --display_error_number --warn_sections --xml_link_info="MyProject_linkInfo.xml" --rom_model -o "MyProject.out" $(ORDERED_OBJS)
+	@echo 'Finished building target: $@'
 	@echo ' '
 
 MyProject.hex: $(EXE_OUTPUTS)
-	@echo 'Building files: $(strip $(EXE_OUTPUTS__QUOTED))'
 	@echo 'Invoking: ARM Hex Utility'
-	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.6.LTS/bin/armhex"  -o "MyProject.hex" $(EXE_OUTPUTS__QUOTED)
-	@echo 'Finished building: $(strip $(EXE_OUTPUTS__QUOTED))'
+	"C:/ti/ccsv7/tools/compiler/ti-cgt-arm_16.9.4.LTS/bin/armhex"  -o "MyProject.hex" $(EXE_OUTPUTS__QUOTED)
+	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
 	-$(RM) $(BIN_OUTPUTS__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "GPIO\GPIO.obj" "INVERSE\INVERSE.obj" "PWM\PWM.obj" "SYSTICK\SYSTICK.obj" "UART\UART.obj" "UART\uartstdio.obj" "UART\ustdlib.obj" 
+	-$(RM) "main.obj" "tm4c123gh6pm_startup_ccs.obj" "GPIO\GPIO.obj" "INVERSE\INVERSE.obj" "PWM\PWM.obj" "SYSTICK\SYSTICK.obj" "UART\UART.obj" "UART\uartstdio.obj" "UART\ustdlib.obj" "eFLL\Fuzzy.obj" "eFLL\FuzzyComposition.obj" "eFLL\FuzzyIO.obj" "eFLL\FuzzyInput.obj" "eFLL\FuzzyOutput.obj" "eFLL\FuzzyRule.obj" "eFLL\FuzzyRuleAntecedent.obj" "eFLL\FuzzyRuleConsequent.obj" "eFLL\FuzzySet.obj" "eFLL\fuzzy_ball_and_plate.obj" 
 	-$(RM) "main.d" "tm4c123gh6pm_startup_ccs.d" "GPIO\GPIO.d" "INVERSE\INVERSE.d" "PWM\PWM.d" "SYSTICK\SYSTICK.d" "UART\UART.d" "UART\uartstdio.d" "UART\ustdlib.d" 
+	-$(RM) "eFLL\Fuzzy.d" "eFLL\FuzzyComposition.d" "eFLL\FuzzyIO.d" "eFLL\FuzzyInput.d" "eFLL\FuzzyOutput.d" "eFLL\FuzzyRule.d" "eFLL\FuzzyRuleAntecedent.d" "eFLL\FuzzyRuleConsequent.d" "eFLL\FuzzySet.d" "eFLL\fuzzy_ball_and_plate.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

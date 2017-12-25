@@ -3,22 +3,22 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-C_SRCS += \
-../PWM/PWM.c 
-
-C_DEPS += \
-./PWM/PWM.d 
+CPP_SRCS += \
+../PWM/PWM.cpp 
 
 OBJS += \
 ./PWM/PWM.obj 
 
+CPP_DEPS += \
+./PWM/PWM.d 
+
 OBJS__QUOTED += \
 "PWM/PWM.obj" 
 
-C_DEPS__QUOTED += \
+CPP_DEPS__QUOTED += \
 "PWM/PWM.d" 
 
-C_SRCS__QUOTED += \
-"../PWM/PWM.c" 
+CPP_SRCS__QUOTED += \
+"../PWM/PWM.cpp" 
 
 

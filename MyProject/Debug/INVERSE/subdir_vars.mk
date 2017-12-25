@@ -3,22 +3,22 @@
 ################################################################################
 
 # Add inputs and outputs from these tool invocations to the build variables 
-C_SRCS += \
-../INVERSE/INVERSE.c 
-
-C_DEPS += \
-./INVERSE/INVERSE.d 
+CPP_SRCS += \
+../INVERSE/INVERSE.cpp 
 
 OBJS += \
 ./INVERSE/INVERSE.obj 
 
+CPP_DEPS += \
+./INVERSE/INVERSE.d 
+
 OBJS__QUOTED += \
 "INVERSE/INVERSE.obj" 
 
-C_DEPS__QUOTED += \
+CPP_DEPS__QUOTED += \
 "INVERSE/INVERSE.d" 
 
-C_SRCS__QUOTED += \
-"../INVERSE/INVERSE.c" 
+CPP_SRCS__QUOTED += \
+"../INVERSE/INVERSE.cpp" 
 
 
